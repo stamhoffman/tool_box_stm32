@@ -63,6 +63,8 @@
 #define LCD_HEIGHT 48
 #define LCD_SIZE LCD_WIDTH * LCD_HEIGHT / 8
 
+
+
 /*
  * @brief LCD parameters
  */
@@ -90,6 +92,10 @@ struct LCD_GPIO{
 	GPIO_TypeDef* CLKPORT;
 	uint16_t CLKPIN;
 };
+
+
+struct LCD_att lcd;
+struct LCD_GPIO lcd_gpio;
 
 /*----- GPIO Pins -----*/
 void LCD_setRST(GPIO_TypeDef* PORT, uint16_t PIN);

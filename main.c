@@ -5,6 +5,8 @@ FlagStatus PLL_ON;
 RCC_ClocksTypeDef RCC_value;
 uint8_t source_clk;
 
+
+
 #define QUARZ         //  QUARZ/RC
 #define  STM32F103C8T6
 
@@ -16,19 +18,30 @@ int main(void)
 {
 
 	RCC_Config();
-	delay_us(200);
 	GPIO_Config();
 
 	LCD_init();
-	LCD_print("Hello", 0, 0);
+	//LCD_print("Tool_Box_STM32", 0, 0);
+	//LCD_print("Smart Home", 0, 1);
+	//LCD_print("02.01.2018", 0, 2);
+	//LCD_print("02.01.2018", 0, 3);
+	//LCD_print("02.01.2018", 0, 4);
+	//LCD_print("02.01.2018", 0, 5);
 
+
+	LCD_print("2017  @  2018 "
+			  "     ***      "
+			  "    ******    "
+			  "   ********   "
+			  "  **********  "
+			  "      #       ", 0, 0);
 
     while(1)
     {
     		GPIO_SetBits(GPIOB,GPIO_Pin_3);
-    		delay_us(500);
-    		GPIO_ResetBits(GPIOB,GPIO_Pin_3);
-    		delay_us(500);
+    		//delay_us(500);
+    		//GPIO_ResetBits(GPIOB,GPIO_Pin_3);
+    		//delay_us(500);
     }
 }
 
@@ -40,11 +53,6 @@ void GPIO_Config(void) {
   GPIOC_Config.GPIO_Mode = GPIO_Mode_IPD;
   GPIOC_Config.GPIO_Speed = GPIO_Speed_10MHz;
   GPIO_Init(PORT_CAP, &GPIOC_Config);
-
-  LCD_setRST(GPIOA, GPIO_Pin_0);
-  LCD_setCE(GPIOA, GPIO_Pin_1);
-  LCD_setDC(GPIOA, GPIO_Pin_2);
-  LCD_setDIN(GPIOA, GPIO_Pin_3);
 
   GPIO_InitTypeDef LCD_PORT;
   LCD_PORT.GPIO_Pin = GPIO_Pin_All;
@@ -58,7 +66,14 @@ void GPIO_Config(void) {
   LED.GPIO_Speed = GPIO_Speed_10MHz;
   GPIO_Init(GPIOB, &LED);
 
-}
+
+  LCD_setRST(GPIOA, GPIO_Pin_0);
+  LCD_setCE(GPIOA, GPIO_Pin_1);
+  LCD_setDC(GPIOA, GPIO_Pin_2);
+  LCD_setDIN(GPIOA, GPIO_Pin_3);
+  LCD_setCLK(GPIOA, GPIO_Pin_4);
+
+ }
 
 
 void RCC_Config(void) {

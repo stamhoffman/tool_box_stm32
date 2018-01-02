@@ -7,3 +7,4 @@ void delay_us(uint32_t delay_us) {
   delay_value = 0;
   while (delay_value < (delay_us - 10));
 }
+

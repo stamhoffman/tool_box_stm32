@@ -44,7 +44,7 @@ void LCD_send(uint8_t val){
   uint8_t i;
 
   for(i = 0; i < 8; i++){
-    GPIO_WriteBit(lcd_gpio.DINPORT, lcd_gpio.DINPIN,!(val & (1 << (7 - i))));
+    GPIO_WriteBit(lcd_gpio.DINPORT, lcd_gpio.DINPIN,!!(val & (1 << (7 - i))));
     GPIO_WriteBit(lcd_gpio.CLKPORT, lcd_gpio.CLKPIN, Bit_SET);
     GPIO_WriteBit(lcd_gpio.CLKPORT, lcd_gpio.CLKPIN, Bit_RESET);
 

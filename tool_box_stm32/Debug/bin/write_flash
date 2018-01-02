@@ -1,1 +1,0 @@
-exec "/bin/st-flash" "write" "tool_box_stm32.bin" "0x8000000"
