@@ -21,27 +21,24 @@ int main(void)
 	GPIO_Config();
 
 	LCD_init();
-	//LCD_print("Tool_Box_STM32", 0, 0);
-	//LCD_print("Smart Home", 0, 1);
-	//LCD_print("02.01.2018", 0, 2);
-	//LCD_print("02.01.2018", 0, 3);
-	//LCD_print("02.01.2018", 0, 4);
-	//LCD_print("02.01.2018", 0, 5);
+	LCD_print("Tool_Box_STM32", 0, 0);
+	delay_us(2000);
 
+	dht_port_init();
+	delay_us(1000);
 
-	LCD_print("2017  @  2018 "
-			  "     ***      "
-			  "    ******    "
-			  "   ********   "
-			  "  **********  "
-			  "      #       ", 0, 0);
 
     while(1)
     {
-    		GPIO_SetBits(GPIOB,GPIO_Pin_3);
-    		//delay_us(500);
-    		//GPIO_ResetBits(GPIOB,GPIO_Pin_3);
-    		//delay_us(500);
+    	start_data_read();
+    	received_data();
+    	pack_data();
+    	LCD_clrScr();
+    	lcd_out_number(dht_data.RH_data_decimal,0,0);
+    	lcd_out_number(dht_data.RH_data_integral,0,1);
+    	lcd_out_number(dht_data.T_data_decimal,0,2);
+    	lcd_out_number(dht_data.T_data_integral,0,3);
+    	delay_us(2000);
     }
 }
 

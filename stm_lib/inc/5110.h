@@ -128,4 +128,5 @@ void LCD_drawVLine(int x, int y, int l);
 void LCD_drawLine(int x1, int y1, int x2, int y2);
 void LCD_drawRectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2);
 
-
+uint8_t long_int_size(uint32_t number);
+void lcd_out_number(uint32_t number, uint8_t x, uint8_t y);

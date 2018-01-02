@@ -345,3 +345,39 @@ void LCD_drawRectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2){
   LCD_drawLine(x2, y1, x2, y2);
   LCD_drawLine(x1, y2, x2, y2);
 }
+
+
+uint8_t long_int_size(uint32_t number) {
+  uint8_t decimal = 0;
+  if (number == 0) {
+    return 1;
+  }
+  while (number > 0) {
+    number = number / 10;
+    decimal++;
+  }
+  return decimal;
+}
+
+void lcd_out_number(uint32_t number, uint8_t x, uint8_t y) {
+  char lcd_massiv_out[16];
+  uint32_t div_remainder = 1;
+  uint8_t flag = 0;
+  uint8_t index_mass_lcd;
+  index_mass_lcd = long_int_size(number) - 1;
+  lcd_massiv_out[index_mass_lcd + 1] = '\0';
+
+  while (number > 0 && index_mass_lcd >= 0) {
+    div_remainder = number % 10;
+    lcd_massiv_out[index_mass_lcd--] = div_remainder + 48;
+    number = number / 10;
+    flag = 1;
+  }
+
+  if (number == 0 && flag == 0) {
+    lcd_massiv_out[index_mass_lcd] = 48;
+    LCD_print(lcd_massiv_out,x, y);
+  } else
+	LCD_print(lcd_massiv_out,x, y);
+  return;
+}

@@ -1,1 +1,1 @@
-exec "/bin/st-flash" "write" "tool_box_stm32.bin" "0x8000000"
+exec "/bin/st-flash" "write" "/home/stam/workspace/tool_box_stm32/tool_box_stm32/Debug/bin/tool_box_stm32.bin" "0x8000000"

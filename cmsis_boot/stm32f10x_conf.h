@@ -53,6 +53,7 @@
 #include <stdbool.h>
 #include "font.h"
 #include "5110.h"
+#include "dht11.h"
 
 
 /* Exported types ------------------------------------------------------------*/
