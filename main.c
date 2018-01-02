@@ -22,14 +22,17 @@ int main(void)
 
 	LCD_init();
 	LCD_print("Tool_Box_STM32", 0, 0);
+	lcd_out_number(RCC_value.HCLK_Frequency,0,1);
+	LCD_print("Hz",50,1);
 	delay_us(2000);
 
 	dht_port_init();
-	delay_us(1000);
 
+	int count;
 
     while(1)
     {
+    	dht_port_init();
     	start_data_read();
     	received_data();
     	pack_data();
@@ -58,7 +61,7 @@ void GPIO_Config(void) {
   GPIO_Init(GPIOA, &LCD_PORT);
 
   GPIO_InitTypeDef LED;
-  LED.GPIO_Pin = GPIO_Pin_3;
+  LED.GPIO_Pin = GPIO_Pin_All;
   LED.GPIO_Mode = GPIO_Mode_Out_PP;
   LED.GPIO_Speed = GPIO_Speed_10MHz;
   GPIO_Init(GPIOB, &LED);
@@ -80,7 +83,7 @@ void RCC_Config(void) {
   RCC_HSEConfig(RCC_HSE_ON);
 
   if ((HSE_ON = RCC_WaitForHSEStartUp()) == SUCCESS) {
-    RCC_HCLKConfig(RCC_SYSCLK_Div2);
+    RCC_HCLKConfig(RCC_SYSCLK_Div1);
     RCC_PCLK1Config(RCC_HCLK_Div2);
     RCC_PCLK2Config(RCC_HCLK_Div16);
     RCC_ADCCLKConfig(RCC_PCLK2_Div6);

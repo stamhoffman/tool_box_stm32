@@ -6,10 +6,16 @@ GPIO_InitTypeDef Config_DHT;
 
 void dht_port_init(void)
 {
-	Config_DHT.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	Config_DHT.GPIO_Mode = GPIO_Mode_IPU;
 	Config_DHT.GPIO_Pin = DHTPIN;
 	Config_DHT.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(DHTPORT,&Config_DHT);
+	  GPIO_InitTypeDef LED;
+	  LED.GPIO_Pin = GPIO_Pin_All;
+	  LED.GPIO_Mode = GPIO_Mode_Out_PP;
+	  LED.GPIO_Speed = GPIO_Speed_10MHz;
+	  GPIO_Init(GPIOB, &LED);
+
 }
 
 void delay_dht(void)
@@ -19,36 +25,31 @@ void delay_dht(void)
 
 void start_data_read(void)
 {
-	LCD_clrScr();
-	LCD_print("Start_init",0,0);
+	GPIO_ResetBits(GPIOB, GPIO_Pin_5);
+	delay_us(30);//30
+	GPIO_SetBits(GPIOB, GPIO_Pin_5);
+	int count;
+	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us 250
 	Config_DHT.GPIO_Mode = GPIO_Mode_IPD;
-	GPIO_Init(DHTPORT,&Config_DHT);
-	delay_us(18000);
-	Config_DHT.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-	GPIO_Init(DHTPORT,&Config_DHT);
-	delay_us(40);
-	LCD_clrScr();
-	LCD_print("End_init",0,0);
+		Config_DHT.GPIO_Pin = GPIO_Pin_5;
+		Config_DHT.GPIO_Speed = GPIO_Speed_50MHz;
+		GPIO_Init(GPIOB,&Config_DHT);
 }
 
 void received_data(void)
 {
-	LCD_clrScr();
-	LCD_print("Start_read",0,0);
 	int i;
-	while(GPIO_ReadInputDataBit(DHTPORT, DHTPIN));
-	delay_us(80);
-	while(!GPIO_ReadInputDataBit(DHTPORT, DHTPIN));
-	delay_us(80);
-	LCD_clrScr();
-	LCD_print("read_40_bit",0,0);
+	int count;
+	//while(GPIO_ReadInputDataBit(DHTPORT, DHTPIN));
+	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
+	//while(!GPIO_ReadInputDataBit(DHTPORT, DHTPIN));
+	for(count = 0; count < 380; count++) __ASM volatile ("nop");//82us
 
 	for(i = 0; i < 40; i++)
 	{
 		//while(GPIO_ReadInputDataBit(DHTPORT, DHTPIN)); // poka 1 gdem
-		delay_us(55);
+		for(count = 0; count < 360; count++) __ASM volatile ("nop");//76us
 		//while(!GPIO_ReadInputDataBit(DHTPORT, DHTPIN));
-		delay_us(40);
 		if(GPIO_ReadInputDataBit(DHTPORT, DHTPIN))
 		{
 			data[i] = 1;
@@ -57,13 +58,11 @@ void received_data(void)
 		{
 			data[i] = 0;
 		}
-		delay_us(40);
+		for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
 
 	}
-	delay_us(55);
+	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
 	//while(!GPIO_ReadInputDataBit(DHTPORT, DHTPIN));
-	LCD_clrScr();
-	LCD_print("End_data_read",0,0);
 }
 
 
@@ -72,7 +71,7 @@ void pack_data(void)
 	LCD_clrScr();
 	LCD_print("Start_packed",0,0);
 	uint8_t count;
-	bool bit40_to_struct[40];
+	int bit40_to_struct[40];
 	for(count = 0; count < 40; count++)
 	{
 		bit40_to_struct[count] = data[count];
@@ -109,4 +108,3 @@ void pack_data(void)
 	LCD_clrScr();
 	LCD_print("End_packed",0,0);
 }
-

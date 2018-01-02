@@ -1,16 +1,17 @@
 
-#define DHTPORT GPIOB
-#define DHTPIN GPIO_Pin_0
+#define DHTPORT GPIOC
+#define DHTPIN GPIO_Pin_15
+
 
 
 //40-bit data
 struct data
 {
-	uint8_t RH_data_integral;
-	uint8_t RH_data_decimal;
-	uint8_t T_data_integral;
-	uint8_t T_data_decimal;
-	uint8_t check_sum;
+	int RH_data_integral;
+	int RH_data_decimal;
+	int T_data_integral;
+	int T_data_decimal;
+	int check_sum;
 };
 
 void dht_port_init(void);
@@ -21,6 +22,5 @@ void start_data_read(void);
 
 void pack_data(void);
 
-uint8_t data[40];
+int data[40];
 struct data dht_data;
-
