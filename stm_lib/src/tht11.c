@@ -2,20 +2,12 @@
 
 GPIO_InitTypeDef Config_DHT;
 
-
-
 void dht_port_init(void)
 {
-	Config_DHT.GPIO_Mode = GPIO_Mode_IPU;
+	Config_DHT.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 	Config_DHT.GPIO_Pin = DHTPIN;
 	Config_DHT.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(DHTPORT,&Config_DHT);
-	  GPIO_InitTypeDef LED;
-	  LED.GPIO_Pin = GPIO_Pin_All;
-	  LED.GPIO_Mode = GPIO_Mode_Out_PP;
-	  LED.GPIO_Speed = GPIO_Speed_10MHz;
-	  GPIO_Init(GPIOB, &LED);
-
 }
 
 void delay_dht(void)
@@ -25,15 +17,16 @@ void delay_dht(void)
 
 void start_data_read(void)
 {
-	GPIO_ResetBits(GPIOB, GPIO_Pin_5);
-	delay_us(30);//30
-	GPIO_SetBits(GPIOB, GPIO_Pin_5);
 	int count;
-	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us 250
 	Config_DHT.GPIO_Mode = GPIO_Mode_IPD;
-		Config_DHT.GPIO_Pin = GPIO_Pin_5;
-		Config_DHT.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_Init(GPIOB,&Config_DHT);
+	GPIO_Init(DHTPORT,&Config_DHT);
+	delay_us(20);//18 us
+	//for(count = 0; count < 8000; count++) __ASM volatile ("nop");//54us
+	Config_DHT.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	GPIO_Init(DHTPORT,&Config_DHT);
+
+
+	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
 }
 
 void received_data(void)
