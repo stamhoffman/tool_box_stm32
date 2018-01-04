@@ -20,6 +20,8 @@ struct data
 
 void dht_port_init(void);
 
+void received_data(void);
+
 void delay_dht(void);
 
 void start_data_read(void);

@@ -2,52 +2,50 @@
 
 GPIO_InitTypeDef Config_DHT;
 
-void dht_port_init(void)
-{
-	Config_DHT.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-	Config_DHT.GPIO_Pin = DHTPIN;
-	Config_DHT.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(DHTPORT,&Config_DHT);
-}
-
-void delay_dht(void)
-{
-	delay_us(1000000);
-}
 
 void start_data_read(void)
 {
+	LCD_clrScr();
+	LCD_print("read_data",0,0);
 	int count;
-	Config_DHT.GPIO_Mode = GPIO_Mode_IPD;
-	GPIO_Init(DHTPORT,&Config_DHT);
-	delay_us(20);//18 us
-	Config_DHT.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-	GPIO_Init(DHTPORT,&Config_DHT);
-	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
+	DHTPORT ->CRH = 0x84444444;
+	DHTPORT -> IDR = 0x00006000;
+	delay_us(25);
+	DHTPORT ->CRH = 0x44444444;
+	DHTPORT -> IDR = 0x0000e000;
+	for(count = 0; count < 70; count++) __ASM volatile ("nop");//35us
 }
 
 void received_data(void)
 {
 	int i;
+	int bit = 0;
 	int count;
+	for(count = 0; count < 920; count++) __ASM volatile ("nop");//82us
+	//lcd_out_number((DHTPORT->IDR) & (DHTPIN) << 15,0,3);
+	while((DHTPORT->IDR) & (DHTPIN));//poka 1
 
-	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
-	for(count = 0; count < 380; count++) __ASM volatile ("nop");//82us
+	GPIO_SetBits(GPIOB,GPIO_Pin_5);
+	GPIO_ResetBits(GPIOB,GPIO_Pin_5);
 
 	for(i = 0; i < 40; i++)
 	{
-		for(count = 0; count < 360; count++) __ASM volatile ("nop");//76us
-		if(GPIO_ReadInputDataBit(DHTPORT, DHTPIN))
+		while(!((DHTPORT->IDR) & (DHTPIN)));//poka 0
+		for(count = 0; (bit = ((DHTPORT->IDR) & (DHTPIN))) && count < 70; count++) __ASM volatile ("nop");//us
+
+		if(GPIO_ReadInputDataBit(DHTPORT,DHTPIN))
 		{
 			data[i] = 1;
+			while(((DHTPORT->IDR) & (DHTPIN)));
+			continue;
 		}
-		else if(!GPIO_ReadInputDataBit(DHTPORT, DHTPIN))
+		else
 		{
 			data[i] = 0;
+			continue;
 		}
-		for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
-
 	}
+
 	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
 }
 

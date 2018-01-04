@@ -24,15 +24,12 @@ int main(void)
 	LCD_print("Tool_Box_STM32", 0, 0);
 	lcd_out_number(RCC_value.HCLK_Frequency,0,1);
 	LCD_print("Hz",50,1);
-	delay_us(2000);
-
-	dht_port_init();
-
-	int count;
+	delay_us(5000);
+	LCD_clrScr();
+	LCD_print("Start", 0, 0);
 
     while(1)
     {
-    	dht_port_init();
     	start_data_read();
     	received_data();
     	pack_data();
@@ -41,18 +38,12 @@ int main(void)
     	lcd_out_number(dht_data.RH_data_integral,0,1);
     	lcd_out_number(dht_data.T_data_decimal,0,2);
     	lcd_out_number(dht_data.T_data_integral,0,3);
-    	delay_us(2000);
-    }
+    	delay_us(500);
+     }
 }
 
 
 void GPIO_Config(void) {
-
-  GPIO_InitTypeDef GPIOC_Config;
-  GPIOC_Config.GPIO_Pin = CAP_ENTER | CAP_UP_DOWN | CAP_MODE;
-  GPIOC_Config.GPIO_Mode = GPIO_Mode_IPD;
-  GPIOC_Config.GPIO_Speed = GPIO_Speed_10MHz;
-  GPIO_Init(PORT_CAP, &GPIOC_Config);
 
   GPIO_InitTypeDef LCD_PORT;
   LCD_PORT.GPIO_Pin = GPIO_Pin_All;
@@ -60,18 +51,26 @@ void GPIO_Config(void) {
   LCD_PORT.GPIO_Speed = GPIO_Speed_10MHz;
   GPIO_Init(GPIOA, &LCD_PORT);
 
-  GPIO_InitTypeDef LED;
-  LED.GPIO_Pin = GPIO_Pin_All;
-  LED.GPIO_Mode = GPIO_Mode_Out_PP;
-  LED.GPIO_Speed = GPIO_Speed_10MHz;
-  GPIO_Init(GPIOB, &LED);
-
-
   LCD_setRST(GPIOA, GPIO_Pin_0);
   LCD_setCE(GPIOA, GPIO_Pin_1);
   LCD_setDC(GPIOA, GPIO_Pin_2);
   LCD_setDIN(GPIOA, GPIO_Pin_3);
   LCD_setCLK(GPIOA, GPIO_Pin_4);
+
+  GPIO_InitTypeDef Config_DHT;
+
+ Config_DHT.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ Config_DHT.GPIO_Pin = DHTPIN;
+ Config_DHT.GPIO_Speed = GPIO_Speed_50MHz;
+ GPIO_Init(DHTPORT,&Config_DHT);
+
+ GPIO_InitTypeDef BB;
+
+ BB.GPIO_Mode = GPIO_Mode_Out_PP;
+ BB.GPIO_Pin = GPIO_Pin_5;
+ BB.GPIO_Speed = GPIO_Speed_50MHz;
+ GPIO_Init(GPIOB,&BB);
+
 
  }
 
