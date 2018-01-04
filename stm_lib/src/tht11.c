@@ -21,11 +21,8 @@ void start_data_read(void)
 	Config_DHT.GPIO_Mode = GPIO_Mode_IPD;
 	GPIO_Init(DHTPORT,&Config_DHT);
 	delay_us(20);//18 us
-	//for(count = 0; count < 8000; count++) __ASM volatile ("nop");//54us
 	Config_DHT.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 	GPIO_Init(DHTPORT,&Config_DHT);
-
-
 	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
 }
 
@@ -33,16 +30,13 @@ void received_data(void)
 {
 	int i;
 	int count;
-	//while(GPIO_ReadInputDataBit(DHTPORT, DHTPIN));
+
 	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
-	//while(!GPIO_ReadInputDataBit(DHTPORT, DHTPIN));
 	for(count = 0; count < 380; count++) __ASM volatile ("nop");//82us
 
 	for(i = 0; i < 40; i++)
 	{
-		//while(GPIO_ReadInputDataBit(DHTPORT, DHTPIN)); // poka 1 gdem
 		for(count = 0; count < 360; count++) __ASM volatile ("nop");//76us
-		//while(!GPIO_ReadInputDataBit(DHTPORT, DHTPIN));
 		if(GPIO_ReadInputDataBit(DHTPORT, DHTPIN))
 		{
 			data[i] = 1;
@@ -55,7 +49,6 @@ void received_data(void)
 
 	}
 	for(count = 0; count < 250; count++) __ASM volatile ("nop");//54us
-	//while(!GPIO_ReadInputDataBit(DHTPORT, DHTPIN));
 }
 
 
