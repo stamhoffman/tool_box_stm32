@@ -27,6 +27,7 @@ int main(void)
 	delay_us(5000);
 	LCD_clrScr();
 	LCD_print("Start", 0, 0);
+	LCD_clrScr();
 
     while(1)
     {
@@ -34,10 +35,13 @@ int main(void)
     	received_data();
     	pack_data();
     	LCD_clrScr();
-    	lcd_out_number(dht_data.RH_data_decimal,0,0);
-    	lcd_out_number(dht_data.RH_data_integral,0,1);
-    	lcd_out_number(dht_data.T_data_decimal,0,2);
-    	lcd_out_number(dht_data.T_data_integral,0,3);
+    	LCD_print("DHT11 sensor",0,0);
+    	LCD_print("H = ",0,2);
+    	lcd_out_number(dht_data.RH_data_decimal,20,2);
+    	LCD_print("%",35,2);
+    	LCD_print("T = ",0,3);
+    	lcd_out_number(dht_data.T_data_decimal,20,3);
+    	LCD_print("C",35,3);
     	delay_us(500);
      }
 }
@@ -107,3 +111,9 @@ void RCC_Config(void) {
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
 }
 
+void assert_failed(uint8_t* file, uint32_t line)
+{
+	LCD_print(file,0,0);
+	lcd_out_number(line,0,0);
+	while(1);
+}

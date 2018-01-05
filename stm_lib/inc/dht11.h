@@ -28,5 +28,7 @@ void start_data_read(void);
 
 void pack_data(void);
 
+uint8_t bit_shift_calc(uint8_t begin, uint8_t end);
+
 int data[40];
 struct data dht_data;

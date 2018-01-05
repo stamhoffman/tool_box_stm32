@@ -5,8 +5,6 @@ GPIO_InitTypeDef Config_DHT;
 
 void start_data_read(void)
 {
-	LCD_clrScr();
-	LCD_print("read_data",0,0);
 	int count;
 	DHTPORT ->CRH = 0x84444444;
 	DHTPORT -> IDR = 0x00006000;
@@ -19,19 +17,15 @@ void start_data_read(void)
 void received_data(void)
 {
 	int i;
-	int bit = 0;
 	int count;
 	for(count = 0; count < 920; count++) __ASM volatile ("nop");//82us
-	//lcd_out_number((DHTPORT->IDR) & (DHTPIN) << 15,0,3);
 	while((DHTPORT->IDR) & (DHTPIN));//poka 1
 
-	GPIO_SetBits(GPIOB,GPIO_Pin_5);
-	GPIO_ResetBits(GPIOB,GPIO_Pin_5);
 
 	for(i = 0; i < 40; i++)
 	{
 		while(!((DHTPORT->IDR) & (DHTPIN)));//poka 0
-		for(count = 0; (bit = ((DHTPORT->IDR) & (DHTPIN))) && count < 70; count++) __ASM volatile ("nop");//us
+		for(count = 0; (((DHTPORT->IDR) & (DHTPIN))) && count < 70; count++) __ASM volatile ("nop");//us
 
 		if(GPIO_ReadInputDataBit(DHTPORT,DHTPIN))
 		{
@@ -52,43 +46,49 @@ void received_data(void)
 
 void pack_data(void)
 {
-	LCD_clrScr();
-	LCD_print("Start_packed",0,0);
-	uint8_t count;
-	int bit40_to_struct[40];
-	for(count = 0; count < 40; count++)
-	{
-		bit40_to_struct[count] = data[count];
-	}
+	int count;
+	uint8_t flag;
 
 	dht_data.RH_data_decimal = 0;
 
-	for(count = 0; count < 8; count++)
+	for(count = 7; count >= 0; count--)
 	{
-		dht_data.RH_data_decimal = dht_data.RH_data_decimal | (bit40_to_struct[count] << count);
+		dht_data.RH_data_decimal = (dht_data.RH_data_decimal) | ((data[count]) << (7 - count));
+
 	}
 
 	dht_data.RH_data_integral = 0;
 
-	for(count = 8; count < 16; count++)
+	for(count = 15; count >= 8; count--)
 	{
-		dht_data.RH_data_integral = dht_data.RH_data_integral | (bit40_to_struct[count] << (count - 8));
+		dht_data.RH_data_integral = (dht_data.RH_data_integral) | ((data[count]) << (15 - count));
+
 	}
 
 
 	dht_data.T_data_decimal = 0;
 
-	for(count = 16; count < 24; count++)
+	for(count = 23; count >= 16; count--)
 	{
-		dht_data.T_data_decimal = dht_data.T_data_decimal | (bit40_to_struct[count] << (count - 16));
+		dht_data.T_data_decimal = (dht_data.T_data_decimal) | ((data[count]) << (23 - count));
+
 	}
 
 	dht_data.T_data_integral = 0;
 
-	for(count = 24; count < 32; count++)
+	for(count = 31; count >= 24; count--)
 	{
-		dht_data.T_data_integral = dht_data.T_data_integral | (bit40_to_struct[count] << (count - 24));
+		dht_data.T_data_integral = (dht_data.T_data_integral) | ((data[count]) << (31 - count));
+
 	}
-	LCD_clrScr();
-	LCD_print("End_packed",0,0);
+}
+
+
+uint8_t bit_shift_calc(uint8_t begin, uint8_t end)
+{
+	uint8_t count;
+	uint8_t flag;
+	for(count = begin, flag = 0; data[count] == 0 && flag != end; count++,flag++);
+
+	return flag;
 }
