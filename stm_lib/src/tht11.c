@@ -6,7 +6,7 @@ void start_data_read(void) {
   int count;
   DHTPORT->CRH = 0x84444444;
   DHTPORT->IDR = 0x00006000;
-  delay_us(25);
+  delay_ms(25);
   DHTPORT->CRH = 0x44444444;
   DHTPORT->IDR = 0x0000e000;
   for (count = 0; count < 70; count++)
@@ -44,7 +44,6 @@ void received_data(void) {
 
 void pack_data(void) {
   int count;
-  uint8_t flag;
 
   dht_data.RH_data_decimal = 0;
 

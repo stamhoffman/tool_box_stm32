@@ -20,10 +20,11 @@ int main(void) {
   LCD_print("Tool_Box_STM32", 0, 0);
   lcd_out_number(RCC_value.HCLK_Frequency, 0, 1);
   LCD_print("Hz", 50, 1);
-  delay_us(5000);
+  delay_ms(5000);
   LCD_clrScr();
   LCD_print("Start", 0, 0);
   LCD_clrScr();
+  delay_sec(20);
 
   while (1) {
     start_data_read();
@@ -37,7 +38,7 @@ int main(void) {
     LCD_print("T = ", 0, 3);
     lcd_out_number(dht_data.T_data_decimal, 20, 3);
     LCD_print("C", 35, 3);
-    delay_us(500);
+    delay_ms(500);
   }
 }
 
@@ -104,8 +105,6 @@ void RCC_Config(void) {
 }
 
 void assert_failed(uint8_t *file, uint32_t line) {
-  LCD_print(file, 0, 0);
-  lcd_out_number(line, 0, 0);
-  while (1)
-    ;
+
+  while (1);
 }
