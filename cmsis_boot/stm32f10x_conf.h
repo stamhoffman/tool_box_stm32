@@ -30,6 +30,7 @@
 #include <stdbool.h>
 #include "font.h"
 #include "5110.h"
+#include "stm32f10x_i2c.h"
 /* Exported macro ------------------------------------------------------------*/
 #define USE_FULL_ASSERT
 #ifdef  USE_FULL_ASSERT
