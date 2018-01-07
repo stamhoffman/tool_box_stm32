@@ -9,7 +9,6 @@ void delay_ms(uint32_t delay_ms) {
   SysTick_Config(RCC_value.HCLK_Frequency / 1000);
   SysTick->VAL = 0;
   delay_value = 0;
-  delay_ms = delay_ms * 1000;
   while (delay_value < delay_ms);
   SysTick_Config(RCC_value.HCLK_Frequency/1000000);
 }
@@ -25,10 +24,10 @@ void delay_us(uint32_t delay_us) {
 void delay_sec(uint32_t delay_sec)
 {
 	RCC_GetClocksFreq(&RCC_value);
-	SysTick_Config(RCC_value.HCLK_Frequency);
+	SysTick_Config(RCC_value.HCLK_Frequency/1000);
 	SysTick->VAL = 0;
 	delay_value = 0;
-	while (delay_value < delay_sec);
+	while (delay_value < delay_sec * 1000);
 	SysTick_Config(RCC_value.HCLK_Frequency / 1000000);
 }
 

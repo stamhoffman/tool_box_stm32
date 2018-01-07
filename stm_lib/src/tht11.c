@@ -3,43 +3,35 @@
 GPIO_InitTypeDef Config_DHT;
 
 void start_data_read(void) {
-  int count;
   DHTPORT->CRH = 0x84444444;
   DHTPORT->IDR = 0x00006000;
-  delay_ms(25);
+  delay_ms(18);
   DHTPORT->CRH = 0x44444444;
   DHTPORT->IDR = 0x0000e000;
-  for (count = 0; count < 70; count++)
-    __ASM volatile("nop"); // 35us
+  delay_us(8);
 }
 
 void received_data(void) {
   int i;
-  int count;
-  for (count = 0; count < 920; count++)
-    __ASM volatile("nop"); // 82us
-  while ((DHTPORT->IDR) & (DHTPIN))
-    ; // poka 1
+
+  while ((DHTPORT->IDR) & (DHTPIN));
+  delay_us(150);
+  while ((DHTPORT->IDR) & (DHTPIN));
 
   for (i = 0; i < 40; i++) {
-    while (!((DHTPORT->IDR) & (DHTPIN)))
-      ; // poka 0
-    for (count = 0; (((DHTPORT->IDR) & (DHTPIN))) && count < 70; count++)
-      __ASM volatile("nop"); // us
+    while (!((DHTPORT->IDR) & (DHTPIN)));
+   delay_us(40);
 
-    if (GPIO_ReadInputDataBit(DHTPORT, DHTPIN)) {
+    if ((DHTPORT->IDR &DHTPIN)) {
       data[i] = 1;
-      while (((DHTPORT->IDR) & (DHTPIN)))
-        ;
+      while (((DHTPORT->IDR) & (DHTPIN)));
       continue;
     } else {
       data[i] = 0;
       continue;
     }
   }
-
-  for (count = 0; count < 250; count++)
-    __ASM volatile("nop"); // 54us
+delay_us(54);
 }
 
 void pack_data(void) {

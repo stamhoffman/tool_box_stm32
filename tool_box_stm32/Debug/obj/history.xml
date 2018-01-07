@@ -1,35 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F103RB -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -IZ:\home\stam\workspace\tool_box_stm32\cmsis -IZ:\home\stam\workspace -IZ:\home\stam\workspace\tool_box_stm32\stm_lib -IZ:\home\stam\workspace\tool_box_stm32 -IZ:\home\stam\workspace\tool_box_stm32\stm_lib\inc -IZ:\home\stam\workspace\tool_box_stm32\cmsis_boot">
-      <target file="stm32f10x_i2c.o" lastModified="160ce28fd9e">
-         <source file="..\..\..\stm_lib\src\stm32f10x_i2c.c" lastModified="160ccc3b0be"/>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F103RB -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -ID:\workspace\tool_box_stm32\stm_lib -ID:\workspace -ID:\workspace\tool_box_stm32\cmsis -ID:\workspace\tool_box_stm32 -ID:\workspace\tool_box_stm32\cmsis_boot -ID:\workspace\tool_box_stm32\stm_lib\inc">
+      <target file="stm32f10x_i2c.o" lastModified="160cf1eb27f">
+         <source file="..\..\..\stm_lib\src\stm32f10x_i2c.c" lastModified="160cebeddda"/>
       </target>
-      <target file="system_stm32f10x.o" lastModified="160ce28f512">
-         <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="160b49598c5"/>
+      <target file="system_stm32f10x.o" lastModified="160cf1eb0f9">
+         <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="160b56922a1"/>
       </target>
-      <target file="menu.o" lastModified="160ce28fb3e">
-         <source file="..\..\..\stm_lib\src\menu.c" lastModified="160b50ae07d"/>
+      <target file="menu.o" lastModified="160cf1eb203">
+         <source file="..\..\..\stm_lib\src\menu.c" lastModified="160b52e692f"/>
       </target>
-      <target file="main.o" lastModified="160ce28f916">
-         <source file="..\..\..\main.c" lastModified="160ce2652c6"/>
+      <target file="main.o" lastModified="160cf1eb1a5">
+         <source file="..\..\..\main.c" lastModified="160cf1ea71a"/>
       </target>
-      <target file="5110.o" lastModified="160ce28f416">
-         <source file="..\..\..\stm_lib\src\5110.c" lastModified="160ccc429cf"/>
+      <target file="5110.o" lastModified="160cf1eb0bb">
+         <source file="..\..\..\stm_lib\src\5110.c" lastModified="160cebeddda"/>
       </target>
-      <target file="stm32f10x_gpio.o" lastModified="160ce28f812">
-         <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="160ccc3b0b2"/>
+      <target file="stm32f10x_gpio.o" lastModified="160cf1eb176">
+         <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="160cebeddda"/>
       </target>
-      <target file="delay_.o" lastModified="160ce28fc3a">
-         <source file="..\..\..\stm_lib\src\delay_.c" lastModified="160ce28e75e"/>
+      <target file="delay_.o" lastModified="160cf1eb231">
+         <source file="..\..\..\stm_lib\src\delay_.c" lastModified="160cee82c03"/>
       </target>
-      <target file="tht11.o" lastModified="160ce28f60a">
-         <source file="..\..\..\stm_lib\src\tht11.c" lastModified="160cd430acc"/>
+      <target file="tht11.o" lastModified="160cf1eb119">
+         <source file="..\..\..\stm_lib\src\tht11.c" lastModified="160cf1bf4ed"/>
       </target>
-      <target file="stm32f10x_rcc.o" lastModified="160ce28fa52">
-         <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="160ccc3b0e6"/>
+      <target file="stm32f10x_rcc.o" lastModified="160cf1eb1e3">
+         <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="160cebeddda"/>
       </target>
-      <target file="startup_stm32f10x_md.o" lastModified="160ce28f6ca">
-         <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="160b49598b5"/>
+      <target file="startup_stm32f10x_md.o" lastModified="160cf1eb138">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="160b569229f"/>
       </target>
    </processor>
 </history>
