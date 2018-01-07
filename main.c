@@ -1,15 +1,10 @@
 #include <stm32f10x_conf.h>
 
+RCC_ClocksTypeDef RCC_value;
 ErrorStatus HSE_ON;
 FlagStatus PLL_ON;
-RCC_ClocksTypeDef RCC_value;
 uint8_t source_clk;
 
-#define QUARZ //  QUARZ/RC
-#define STM32F103C8T6
-
-void RCC_Config(void);
-void GPIO_Config(void);
 
 int main(void) {
 
@@ -24,21 +19,28 @@ int main(void) {
   LCD_clrScr();
   LCD_print("Start", 0, 0);
   LCD_clrScr();
-  delay_sec(20);
+
 
   while (1) {
-    start_data_read();
-    received_data();
-    pack_data();
-    LCD_clrScr();
-    LCD_print("DHT11 sensor", 0, 0);
-    LCD_print("H = ", 0, 2);
-    lcd_out_number(dht_data.RH_data_decimal, 20, 2);
-    LCD_print("%", 35, 2);
-    LCD_print("T = ", 0, 3);
-    lcd_out_number(dht_data.T_data_decimal, 20, 3);
-    LCD_print("C", 35, 3);
-    delay_ms(500);
+    //start_data_read();
+    //received_data();
+    //pack_data();
+    //LCD_clrScr();
+    //LCD_print("DHT11 sensor", 0, 0);
+    //LCD_print("H = ", 0, 2);
+    //lcd_out_number(dht_data.RH_data_decimal, 20, 2);
+    //LCD_print("%", 35, 2);
+    //LCD_print("T = ", 0, 3);
+    //lcd_out_number(dht_data.T_data_decimal, 20, 3);
+    //LCD_print("C", 35, 3);
+    //delay_ms(500);
+
+	delay_us(1);
+
+
+
+
+
   }
 }
 
@@ -63,12 +65,12 @@ void GPIO_Config(void) {
   Config_DHT.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_Init(DHTPORT, &Config_DHT);
 
-  GPIO_InitTypeDef BB;
+  GPIO_InitTypeDef CLK_PIN;
 
-  BB.GPIO_Mode = GPIO_Mode_Out_PP;
-  BB.GPIO_Pin = GPIO_Pin_5;
-  BB.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_Init(GPIOB, &BB);
+  CLK_PIN.GPIO_Mode = GPIO_Mode_Out_PP;
+  CLK_PIN.GPIO_Pin = GPIO_Pin_5;
+  CLK_PIN.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_Init(GPIOB, &CLK_PIN);
 }
 
 void RCC_Config(void) {
@@ -96,7 +98,7 @@ void RCC_Config(void) {
 #endif
 
   RCC_GetClocksFreq(&RCC_value);
-  SysTick_Config(RCC_value.HCLK_Frequency / 1000);
+  SysTick_Config(RCC_value.HCLK_Frequency / 1000000);
 
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
@@ -105,6 +107,7 @@ void RCC_Config(void) {
 }
 
 void assert_failed(uint8_t *file, uint32_t line) {
-
+	char *str_ptr = (char *)(file);
+	LCD_print(str_ptr,0,0);
   while (1);
 }

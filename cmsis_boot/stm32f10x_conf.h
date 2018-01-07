@@ -31,6 +31,15 @@
 #include "font.h"
 #include "5110.h"
 #include "stm32f10x_i2c.h"
+
+
+#define QUARZ //  QUARZ/RC
+#define STM32F103C8T6
+
+void RCC_Config(void);
+void GPIO_Config(void);
+
+
 /* Exported macro ------------------------------------------------------------*/
 #define USE_FULL_ASSERT
 #ifdef  USE_FULL_ASSERT
