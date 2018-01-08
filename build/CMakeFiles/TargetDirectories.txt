@@ -1,2 +1,0 @@
-/home/stam/workspace/tool_box_stm32/build/CMakeFiles/rebuild_cache.dir
-/home/stam/workspace/tool_box_stm32/build/CMakeFiles/edit_cache.dir
