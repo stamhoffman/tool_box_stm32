@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="4.4.1 -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=tool_box_stm32.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\tool_box_stm32 -TC:\CooCox\CoIDE\configuration\ProgramData\tool_box_stm32/arm-gcc-link.ld -g">
+      <target file="tool_box_stm32.elf" lastModified="160cf1eb425">
+         <source file="..\obj\5110.o" lastModified="160cf1eb0bb"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="160cf1eb0f9"/>
+         <source file="..\obj\tht11.o" lastModified="160cf1eb119"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="160cf1eb138"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="160cf1eb176"/>
+         <source file="..\obj\main.o" lastModified="160cf1eb1a5"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="160cf1eb1e3"/>
+         <source file="..\obj\menu.o" lastModified="160cf1eb203"/>
+         <source file="..\obj\delay_.o" lastModified="160cf1eb231"/>
+         <source file="..\obj\stm32f10x_i2c.o" lastModified="160cf1eb27f"/>
+      </target>
+   </processor>
+</history>

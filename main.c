@@ -15,31 +15,21 @@ int main(void) {
   LCD_print("Tool_Box_STM32", 0, 0);
   lcd_out_number(RCC_value.HCLK_Frequency, 0, 1);
   LCD_print("Hz", 50, 1);
-  delay_ms(5000);
-  LCD_clrScr();
-  LCD_print("Start", 0, 0);
-  LCD_clrScr();
-
+  delay_ms(1000);
 
   while (1) {
-    //start_data_read();
-    //received_data();
-    //pack_data();
-    //LCD_clrScr();
-    //LCD_print("DHT11 sensor", 0, 0);
-    //LCD_print("H = ", 0, 2);
-    //lcd_out_number(dht_data.RH_data_decimal, 20, 2);
-    //LCD_print("%", 35, 2);
-    //LCD_print("T = ", 0, 3);
-    //lcd_out_number(dht_data.T_data_decimal, 20, 3);
-    //LCD_print("C", 35, 3);
-    //delay_ms(500);
-
-	delay_us(1);
-
-
-
-
+    start_data_read();
+    received_data();
+    pack_data();
+    LCD_clrScr();
+    LCD_print("DHT11 sensor", 0, 0);
+    LCD_print("H = ", 0, 2);
+    lcd_out_number(dht_data.RH_data_decimal, 20, 2);
+    LCD_print("%", 35, 2);
+    LCD_print("T = ", 0, 3);
+    lcd_out_number(dht_data.T_data_decimal, 20, 3);
+    LCD_print("C", 35, 3);
+    delay_sec(1);
 
   }
 }
@@ -62,7 +52,6 @@ void GPIO_Config(void) {
 
   Config_DHT.GPIO_Mode = GPIO_Mode_IN_FLOATING;
   Config_DHT.GPIO_Pin = DHTPIN;
-  Config_DHT.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_Init(DHTPORT, &Config_DHT);
 
   GPIO_InitTypeDef CLK_PIN;
@@ -98,7 +87,7 @@ void RCC_Config(void) {
 #endif
 
   RCC_GetClocksFreq(&RCC_value);
-  SysTick_Config(RCC_value.HCLK_Frequency / 1000000);
+  SysTick_Config(RCC_value.HCLK_Frequency / 1000);
 
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
@@ -106,8 +95,3 @@ void RCC_Config(void) {
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
 }
 
-void assert_failed(uint8_t *file, uint32_t line) {
-	char *str_ptr = (char *)(file);
-	LCD_print(str_ptr,0,0);
-  while (1);
-}
