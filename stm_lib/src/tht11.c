@@ -1,33 +1,32 @@
 #include <stm32f10x_conf.h>
 
-GPIO_InitTypeDef Config_DHT;
-
 void start_data_read(void) {
   DHTPORT->CRH = 0x84444444;
   DHTPORT->IDR = 0x00006000;
-  delay_ms(18);
+  delay_ms(18); //Запрос данных, подтяжка к нулю
   DHTPORT->CRH = 0x44444444;
   DHTPORT->IDR = 0x0000e000;
-  delay_us(8);
+  delay_us(8); //Ждем ответа от абонента
 }
 
 void received_data(void) {
-  int i;
+
+  int bit;
 
   while ((DHTPORT->IDR) & (DHTPIN));
   delay_us(150);
   while ((DHTPORT->IDR) & (DHTPIN));
 
-  for (i = 0; i < 40; i++) {
+  for (bit = 0; bit < 40; bit++) {
     while (!((DHTPORT->IDR) & (DHTPIN)));
    delay_us(40);
 
     if ((DHTPORT->IDR &DHTPIN)) {
-      data[i] = 1;
+      data[bit] = 1;
       while (((DHTPORT->IDR) & (DHTPIN)));
       continue;
     } else {
-      data[i] = 0;
+      data[bit] = 0;
       continue;
     }
   }
@@ -64,13 +63,4 @@ void pack_data(void) {
     dht_data.T_data_integral =
         (dht_data.T_data_integral) | ((data[count]) << (31 - count));
   }
-}
-
-uint8_t bit_shift_calc(uint8_t begin, uint8_t end) {
-  uint8_t count;
-  uint8_t flag;
-  for (count = begin, flag = 0; data[count] == 0 && flag != end;
-       count++, flag++)
-    ;
-  return flag;
 }
