@@ -101,7 +101,7 @@ void set_channal_mux(uint16_t chanall);
 
 #define PORT_MUX GPIOA
 //#define PIN_MUX
-//GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10|GPIO_Pin_11|GPIO_Pin_12
+// GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10|GPIO_Pin_11|GPIO_Pin_12
 
 #define PORT_CONTROL_6MUX GPIOA
 #define PIN_MUX6 GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3

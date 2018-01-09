@@ -1,3 +1,4 @@
+#include "stm32f10x_conf.h"
 
 #define LCD_COMMAND 0
 #define LCD_DATA 1
