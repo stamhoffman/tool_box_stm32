@@ -5,7 +5,7 @@ ErrorStatus HSE_ON;
 FlagStatus PLL_ON;
 uint8_t source_clk;
 
-struct data dht11;
+struct data dht11_data;
 
 
 int main(void) {
@@ -13,26 +13,34 @@ int main(void) {
   RCC_Config();
   GPIO_Config();
 
-  //LCD_init();
-  //LCD_print("Tool_Box_STM32", 0, 0);
-  //lcd_out_number(RCC_value.HCLK_Frequency, 0, 1);
- //LCD_print("Hz", 50, 1);
+  LCD_init();
+  LCD_print("Tool_Box_STM32", 0, 0);
+  lcd_out_number(RCC_value.HCLK_Frequency, 0, 1);
+  LCD_print("Hz", 50, 1);
   delay_sec(1);
 
-  dht11.number_of_world = 5;
-  dht11.bit_order = 8;
+  dht11_data.number_of_world = 5;
+  dht11_data.bit_order = 8;
 
   while (1) {
-    dht11();
-   // LCD_clrScr();
-    //LCD_print("DHT11 sensor", 0, 0);
-   // LCD_print("H = ", 0, 2);
-   // lcd_out_number(dht11.world_1, 20, 2);
-   // LCD_print("%", 35, 2);
-   // LCD_print("T = ", 0, 3);
-    //lcd_out_number(dht11.world_3, 20, 3);
-   // LCD_print("C", 35, 3);
-    delay_sec(1);
+   dht11();
+   LCD_clrScr();
+   LCD_print("DHT11 sensor", 0, 0);
+   //LCD_print("H = ", 0, 2);
+   //lcd_out_number(dht11_data.world_1, 20, 2);
+   //LCD_print("%", 35, 2);
+   //LCD_print("T = ", 0, 3);
+   //lcd_out_number(dht11_data.world_4, 20, 3);
+   //LCD_print("C", 35, 3);
+
+   lcd_out_number(dht11_data.world_1, 0, 1);
+   lcd_out_number(dht11_data.world_2, 0, 2);
+   lcd_out_number(dht11_data.world_3, 0, 3);
+   lcd_out_number(dht11_data.world_4, 0, 4);
+   lcd_out_number(dht11_data.world_4, 0, 5);
+
+
+   delay_sec(1);
   }
 }
 
@@ -46,11 +54,11 @@ void GPIO_Config(void) {
   LCD_PORT.GPIO_Speed = GPIO_Speed_10MHz;
   GPIO_Init(GPIOA, &LCD_PORT);
 
-  //LCD_setRST(GPIOA, GPIO_Pin_0);
-  //LCD_setCE(GPIOA, GPIO_Pin_1);
-  //LCD_setDC(GPIOA, GPIO_Pin_2);
-  //LCD_setDIN(GPIOA, GPIO_Pin_3);
-  //LCD_setCLK(GPIOA, GPIO_Pin_4);
+  LCD_setRST(GPIOA, GPIO_Pin_0);
+  LCD_setCE(GPIOA, GPIO_Pin_1);
+  LCD_setDC(GPIOA, GPIO_Pin_2);
+  LCD_setDIN(GPIOA, GPIO_Pin_3);
+  LCD_setCLK(GPIOA, GPIO_Pin_4);
 
   GPIO_InitTypeDef CLK_PIN;
 
@@ -95,10 +103,11 @@ void RCC_Config(void) {
 
 
 
-dht11() {
+void dht11() {
+  #define BIT 40
   start_data_read(DHTPORT, DHTPIN);
-  received_data(DHTPORT, DHTPIN);
-  pack_world(dht11);
+  received_data(DHTPORT, DHTPIN, &dht11_data);
+  pack_world(&dht11_data);
 }
 
 void assert_failed(uint8_t *file, uint32_t line) {

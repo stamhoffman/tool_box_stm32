@@ -1,11 +1,11 @@
 #include <stm32f10x_conf.h>
 
-//#pragma push(pack,1)
+#pragma pack(push,1)
 
 struct data {
   uint8_t number_of_world;
   uint8_t bit_order;
-  uint8_t world_1;
+  int world_1;
   int bit_0 : 1;
   int bit_1 : 1;
   int bit_2 : 1;
@@ -14,7 +14,7 @@ struct data {
   int bit_5 : 1;
   int bit_6 : 1;
   int bit_7 : 1;
-  uint8_t world_2;
+  int world_2;
   int bit_8 : 1;
   int bit_9 : 1;
   int bit_10 : 1;
@@ -23,7 +23,7 @@ struct data {
   int bit_13 : 1;
   int bit_14 : 1;
   int bit_15 : 1;
-  uint8_t world_3;
+  int world_3;
   int bit_16 : 1;
   int bit_17 : 1;
   int bit_18 : 1;
@@ -32,7 +32,7 @@ struct data {
   int bit_21 : 1;
   int bit_22 : 1;
   int bit_23 : 1;
-  uint8_t world_4;
+  int world_4;
   int bit_24 : 1;
   int bit_25 : 1;
   int bit_26 : 1;
@@ -40,7 +40,7 @@ struct data {
   int bit_28 : 1;
   int bit_29 : 1;
   int bit_30 : 1;
-  uint8_t world_5;
+  int world_5;
   int bit_31 : 1;
   int bit_32 : 1;
   int bit_33 : 1;
@@ -52,9 +52,9 @@ struct data {
   int bit_39 : 1;
 };
 
-//#pragma push(pack,0)
+#pragma pack(pop)
 
 void pack_world(struct data *data);
 void calc_crc(struct data *data);
-void input_data(struct data *data, uint8_t bit, int value);
+void push_bit(struct data *data, uint8_t bit, int value);
 void output_data(struct data *data, uint8_t bit);

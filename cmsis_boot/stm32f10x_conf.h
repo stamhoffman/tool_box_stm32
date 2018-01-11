@@ -23,11 +23,23 @@
 #define __STM32F10x_CONF_H
 
 #include "stm32f10x_gpio.h"
-#include "delay.h"
 #include "stm32f10x_rcc.h"
-#include "one_wire.h"
-#include "pack_data.h"
+#include "stdbool.h"
 #include "string.h"
+#include "delay.h"
+
+#include "font.h"
+#include "display.h"
+
+#include "pack_data.h"
+#include "one_wire.h"
+
+#define QUARZ
+#define STM32F103RBT6
+
+void RCC_Config(void);
+void GPIO_Config(void);
+void dht11(void);
 
 #define USE_FULL_ASSERT
 

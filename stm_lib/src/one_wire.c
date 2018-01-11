@@ -9,30 +9,32 @@ void start_data_read(GPIO_TypeDef *PORT_ONEWIRE, uint16_t PIN_ONEWIRE) {
   delay_us(8);
 }
 
-void received_data(GPIO_TypeDef *PORT_ONEWIRE, uint16_t PIN_ONEWIRE, struct data *data, uint8_t number_bit) {
+void received_data(GPIO_TypeDef *PORT_ONEWIRE, uint16_t PIN_ONEWIRE, struct data *data) {
+
+  #define NUMBER_BIT data->number_of_world * data->number_of_world
 
   while ((PORT_ONEWIRE->IDR) & (PIN_ONEWIRE));
   delay_us(150);
   while ((PORT_ONEWIRE->IDR) & (PIN_ONEWIRE));
 
   uint8_t bit;
-  for (bit = 0; bit < number_bit; bit++) {
+  for (bit = 0; bit < NUMBER_BIT; bit++) {
     while (!((PORT_ONEWIRE->IDR) & (PIN_ONEWIRE)));
     delay_us(40);
 
     if ((PORT_ONEWIRE->IDR & PIN_ONEWIRE)) {
-      input_data(data, bit, 1);
+      push_bit(data, bit, 1);
       while (((PORT_ONEWIRE->IDR) & (PIN_ONEWIRE)));
       continue;
     } else {
-      input_data(data, bit, 1);
+      push_bit(data, bit, 0);
       continue;
     }
   }
   delay_us(54);
 }
 
-void transend_data(GPIO_TypeDef *PORT_ONEWIRE, uint16_t PIN_ONEWIRE) {}
+void transend_data(GPIO_TypeDef *PORT_ONEWIRE, uint16_t PIN_ONEWIRE,struct data *data) {}
 
 void onewire_port_init(GPIO_TypeDef *PORT_ONEWIRE, uint16_t PIN_ONEWIRE) {
   GPIO_InitTypeDef Config;

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench version="2.0">
+<workbenchAdvisor/>
+<window>
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar/>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="pack_data.h" tooltip="tool_box_stm32/stm_lib/inc/pack_data.h">
+<persistable path="/tool_box_stm32/stm_lib/inc/pack_data.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="one_wire.c" tooltip="tool_box_stm32/stm_lib/src/one_wire.c">
+<persistable path="/tool_box_stm32/stm_lib/src/one_wire.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.c" tooltip="tool_box_stm32/stm_lib/src/stm32f10x_gpio.c">
+<persistable path="/tool_box_stm32/stm_lib/src/stm32f10x_gpio.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="one_wire.h" tooltip="tool_box_stm32/stm_lib/inc/one_wire.h">
+<persistable path="/tool_box_stm32/stm_lib/inc/one_wire.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="tool_box_stm32/main.c">
+<persistable path="/tool_box_stm32/main.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_conf.h" tooltip="tool_box_stm32/cmsis_boot/stm32f10x_conf.h">
+<persistable path="/tool_box_stm32/cmsis_boot/stm32f10x_conf.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.h" tooltip="tool_box_stm32/stm_lib/inc/stm32f10x_gpio.h">
+<persistable path="/tool_box_stm32/stm_lib/inc/stm32f10x_gpio.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_rcc.c" tooltip="tool_box_stm32/stm_lib/src/stm32f10x_rcc.c">
+<persistable path="/tool_box_stm32/stm_lib/src/stm32f10x_rcc.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="font.h" tooltip="tool_box_stm32/stm_lib/inc/font.h">
+<persistable path="/tool_box_stm32/stm_lib/inc/font.h"/>
+</file>
+<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
+<persistable>&#x0A;<subPage/>
+</persistable>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.c" tooltip="tool_box_stm32/cmsis_boot/system_stm32f10x.c">
+<persistable path="/tool_box_stm32/cmsis_boot/system_stm32f10x.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="delay.c" tooltip="tool_box_stm32/stm_lib/src/delay.c">
+<persistable path="/tool_box_stm32/stm_lib/src/delay.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="delay.h" tooltip="tool_box_stm32/stm_lib/inc/delay.h">
+<persistable path="/tool_box_stm32/stm_lib/inc/delay.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="tool_box_stm32/cmsis_boot/startup/startup_stm32f10x_md.c">
+<persistable path="/tool_box_stm32/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="tool_box_stm32/cmsis_boot/startup/startup_stm32f10x_md.c">
+<persistable path="/tool_box_stm32/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+</file>
+</mruList>
+</workbench>
