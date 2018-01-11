@@ -110,8 +110,8 @@ void dht11() {
   pack_world(&dht11_data);
 }
 
-void assert_failed(uint8_t *file, uint32_t line) {
-  LCD_clrScr();
-  lcd_out_number(*(uint32_t *)file, 0, 0);
-  lcd_out_number(line, 0, 1);
-}
+// void assert_failed(uint8_t *file, uint32_t line) {
+//   LCD_clrScr();
+//   lcd_out_number(*(uint32_t *)file, 0, 0);
+//   lcd_out_number(line, 0, 1);
+// }

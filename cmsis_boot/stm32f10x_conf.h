@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file    RTC/Calendar/stm32f10x_conf.h 
+  * @file    RTC/Calendar/stm32f10x_conf.h
   * @author  MCD Application Team
   * @version V3.4.0
   * @date    10/15/2010
@@ -16,7 +16,7 @@
   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
   *
   * <h2><center>&copy; COPYRIGHT 2010 STMicroelectronics</center></h2>
-  */ 
+  */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32F10x_CONF_H
@@ -41,25 +41,25 @@ void RCC_Config(void);
 void GPIO_Config(void);
 void dht11(void);
 
-#define USE_FULL_ASSERT
+//#define USE_FULL_ASSERT
 
 /* Exported macro ------------------------------------------------------------*/
-#ifdef  USE_FULL_ASSERT
+//#ifdef  USE_FULL_ASSERT
 
 /**
   * @brief  The assert_param macro is used for function's parameters check.
   * @param  expr: If expr is false, it calls assert_failed function
   *   which reports the name of the source file and the source
-  *   line number of the call that failed. 
+  *   line number of the call that failed.
   *   If expr is true, it returns no value.
   * @retval None
   */
-  #define assert_param(expr) ((expr) ? (void)0 : assert_failed((uint8_t *)__FILE__, __LINE__))
+  //#define assert_param(expr) ((expr) ? (void)0 : assert_failed((uint8_t *)__FILE__, __LINE__))
 /* Exported functions ------------------------------------------------------- */
-  void assert_failed(uint8_t* file, uint32_t line);
-#else
-  #define assert_param(expr) ((void)0)
-#endif /* USE_FULL_ASSERT */
+//  void assert_failed(uint8_t* file, uint32_t line);
+//#else
+#define assert_param(expr) ((void)0)
+//#endif /* USE_FULL_ASSERT */
 
 #endif /* __STM32F10x_CONF_H */
 

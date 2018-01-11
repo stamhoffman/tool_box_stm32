@@ -1,0 +1,2 @@
+/usr/bin/ar qc libCMSIS.a  CMakeFiles/CMSIS.dir/cmsis_boot/system_stm32f10x.c.o CMakeFiles/CMSIS.dir/cmsis_boot/startup/startup_stm32f10x_md.c.o
+/usr/bin/ranlib libCMSIS.a
