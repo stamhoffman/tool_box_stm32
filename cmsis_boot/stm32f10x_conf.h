@@ -64,6 +64,11 @@ void GPIO_Config(void);
 void RCC_Config(void);
 void dht11(void);
 void send_onewire(void);
+
+#define DEBAG // CLIENT or SERVER or DEBAG
+#define QUARZ
+
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Uncomment the line below to expanse the "assert_param" macro in the 

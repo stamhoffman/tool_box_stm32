@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="4.4.1 -mcpu=cortex-m3 -mthumb -g -Map=tool_box_stm32.map -O0 --gc-sections -lm -lgcc -lc -lstdc++ -LC:\CooCox\CoIDE\configuration\ProgramData\tool_box_stm32 -TC:\CooCox\CoIDE\configuration\ProgramData\tool_box_stm32/arm-gcc-link.ld -g">
-      <target file="tool_box_stm32.elf" lastModified="160f15d6183">
-         <source file="..\obj\delay.o" lastModified="160f15d5de9"/>
-         <source file="..\obj\pack_data.o" lastModified="160f15d5e29"/>
-         <source file="..\obj\system_stm32f10x.o" lastModified="160f15d5e63"/>
-         <source file="..\obj\startup_stm32f10x_md.o" lastModified="160f15d5e7e"/>
-         <source file="..\obj\stm32f10x_gpio.o" lastModified="160f15d5eb9"/>
-         <source file="..\obj\main.o" lastModified="160f15d5eeb"/>
-         <source file="..\obj\stm32f10x_rcc.o" lastModified="160f15d5f2f"/>
-         <source file="..\obj\display.o" lastModified="160f15d5f72"/>
-         <source file="..\obj\misc.o" lastModified="160f15d5fa2"/>
-         <source file="..\obj\one_wire.o" lastModified="160f15d5fd0"/>
+   <processor signature="4.4.1 -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=tool_box_stm32.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\tool_box_stm32 -TC:\CooCox\CoIDE\configuration\ProgramData\tool_box_stm32/arm-gcc-link.ld -g">
+      <target file="tool_box_stm32.elf" lastModified="160f69a563e">
+         <source file="..\obj\delay.o" lastModified="160f69a5296"/>
+         <source file="..\obj\pack_data.o" lastModified="160f69a52c5"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="160f69a5304"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="160f69a5313"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="160f69a5361"/>
+         <source file="..\obj\main.o" lastModified="160f69a5390"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="160f69a53ce"/>
+         <source file="..\obj\display.o" lastModified="160f69a541c"/>
+         <source file="..\obj\misc.o" lastModified="160f69a544b"/>
+         <source file="..\obj\one_wire.o" lastModified="160f69a546a"/>
       </target>
    </processor>
 </history>

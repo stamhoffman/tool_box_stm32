@@ -8,39 +8,56 @@ uint8_t source_clk;
 struct data dht11_data;
 struct data send;
 
-#define CLIENT // CLIENT or SERVER
-
-
 int main(void) {
 
   RCC_Config();
   GPIO_Config();
 
   LCD_init();
-  LCD_print("Tool_Box_STM32", 0, 0);
+  LCD_print("Tool_Box_STM33", 0, 0);
   lcd_out_number(RCC_value.HCLK_Frequency, 0, 1);
   LCD_print("Hz", 50, 1);
   delay_sec(1);
 
+
+#ifdef CLIENT
   dht11_data.number_of_world = 5;
   dht11_data.bit_order = 8;
+#endif
 
+#ifdef SERVER
   send.number_of_world = 5;
   send.bit_order = 8;
 
-  send.world_1 = 1;
-  send.world_2 = 2;
-  send.world_3 = 4;
-  send.world_4 = 8;
+  send.world_1 = 0;
+  send.world_2 = 0;
+  send.world_3 = 0;
+  send.world_4 = 0;
 
   unpack_world(&send);
+#endif
 
+#ifdef DEBAG
+  while(1)
+  {
+		GPIOC -> CRH = 0b00110100010001000100010001000100; // "0" - up_down
+		GPIOC -> ODR = 0b0000000000000000;
+		delay_us(80);
+		GPIOC -> CRH = 0b01000100010001000100010001000100; // "1" - float
+		delay_us(80);
+		GPIO_SetBits(GPIOB,GPIO_Pin_5);
+		delay_us(10);
+		GPIO_ResetBits(GPIOB,GPIO_Pin_5);
+  }
+#endif
 
 while (1) {
 
 #ifdef CLIENT
+	  GPIO_SetBits(GPIOB,GPIO_Pin_5);
+	  delay_us(10);
+	  GPIO_ResetBits(GPIOB,GPIO_Pin_5);
 	  dht11();
-	  GPIO_SetBits(GPIOB, GPIO_Pin_5);
 	  LCD_clrScr();
 	  LCD_print("DHT11 sensor", 0, 0);
 	  LCD_print("H = ", 0, 2);
@@ -53,6 +70,7 @@ while (1) {
 	  LCD_print(calc_crc(&dht11_data), 25, 5);
 	  GPIO_ResetBits(GPIOB, GPIO_Pin_5);
 	  delay_sec(1);
+
 #endif
 
 
@@ -73,8 +91,17 @@ while (1) {
 
 void GPIO_Config(void) {
 
+#ifdef CLIENT
   onewire_port_init(DHTPORT, DHTPIN);
+#endif
+
+#ifdef SERVER
   onewire_port_init(OUT_DATA,OUT_DATA_PIN);
+#endif
+
+#ifdef DEBAG
+  onewire_port_init(OUT_DATA,OUT_DATA_PIN);
+#endif
 
   GPIO_InitTypeDef LCD_PORT;
   LCD_PORT.GPIO_Pin = GPIO_Pin_All;
@@ -126,10 +153,8 @@ void RCC_Config(void) {
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
+
 }
-
-
 
 void dht11(void) {
   start_data_read(DHTPORT, DHTPIN);
