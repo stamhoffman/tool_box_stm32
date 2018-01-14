@@ -18,53 +18,85 @@
 <attrib name="charStart" value="-1"/>
 <attrib name="path" value="/"/>
 <attrib name="charEnd" value="-1"/>
+<attrib name="org.eclipse.cdt.debug.core.ignoreCount" value="0"/>
 <attrib name="org.eclipse.debug.core.enabled" value="false"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/tool_box_stm32/stm_lib/src/one_wire.c" type="1"/>
+<marker lineNumber="7" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.cdt.debug.core.condition" value=""/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.cdt.debug.core"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.cdt.debug.core.installCount" value="0"/>
+<attrib name="type" value="org.eclipse.cdt.debug.core.cLineBreakpointMarker"/>
+<attrib name="persistant" value="true"/>
+<attrib name="org.eclipse.cdt.debug.core.breakpointType" value="0"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint: one_wire.c [line: 7]"/>
+<attrib name="registered" value="true"/>
+<attrib name="path" value="/tool_box_stm32/stm_lib/src/one_wire.c"/>
+<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="D:\workspace\tool_box_stm32\stm_lib\src\one_wire.c"/>
+<attrib name="org.eclipse.cdt.debug.core.ignoreCount" value="0"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/tool_box_stm32/stm_lib/src/one_wire.c" type="1"/>
+<marker lineNumber="6" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.cdt.debug.core.condition" value=""/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.cdt.debug.core"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="type" value="org.eclipse.cdt.debug.core.cLineBreakpointMarker"/>
+<attrib name="persistant" value="true"/>
+<attrib name="org.eclipse.cdt.debug.core.breakpointType" value="0"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint: one_wire.c [line: 6]"/>
+<attrib name="registered" value="true"/>
+<attrib name="path" value="/tool_box_stm32/stm_lib/src/one_wire.c"/>
+<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="D:\workspace\tool_box_stm32\stm_lib\src\one_wire.c"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
 <attrib name="org.eclipse.cdt.debug.core.ignoreCount" value="0"/>
 </marker>
 </breakpoint>
 <breakpoint enabled="true" persistant="true" registered="true">
-<resource path="/tool_box_stm32/stm_lib/src/dht11.c" type="1"/>
-<marker lineNumber="15" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
-<attrib name="message" value="Line breakpoint: tht11.c [line: 17]"/>
+<resource path="/tool_box_stm32/stm_lib/src/one_wire.c" type="1"/>
+<marker lineNumber="5" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
 <attrib name="org.eclipse.cdt.debug.core.condition" value=""/>
 <attrib name="org.eclipse.debug.core.id" value="org.eclipse.cdt.debug.core"/>
-<attrib name="org.eclipse.cdt.debug.core.installCount" value="0"/>
-<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="D:\workspace\tool_box_stm32\stm_lib\src\tht11.c"/>
-<attrib name="org.eclipse.cdt.debug.core.breakpointType" value="0"/>
-<attrib name="org.eclipse.cdt.debug.core.ignoreCount" value="0"/>
-<attrib name="org.eclipse.debug.core.enabled" value="true"/>
 <attrib name="workingset_name" value=""/>
+<attrib name="type" value="org.eclipse.cdt.debug.core.cLineBreakpointMarker"/>
+<attrib name="persistant" value="true"/>
+<attrib name="org.eclipse.cdt.debug.core.breakpointType" value="0"/>
 <attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint: one_wire.c [line: 5]"/>
+<attrib name="registered" value="true"/>
+<attrib name="path" value="/tool_box_stm32/stm_lib/src/one_wire.c"/>
+<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="D:\workspace\tool_box_stm32\stm_lib\src\one_wire.c"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.cdt.debug.core.ignoreCount" value="0"/>
 </marker>
 </breakpoint>
 <breakpoint enabled="true" persistant="true" registered="true">
-<resource path="/tool_box_stm32/stm_lib/src/dht11.c" type="1"/>
-<marker lineNumber="38" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
-<attrib name="message" value="Line breakpoint: tht11.c [line: 46]"/>
+<resource path="/tool_box_stm32/stm_lib/src/one_wire.c" type="1"/>
+<marker lineNumber="4" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
 <attrib name="org.eclipse.cdt.debug.core.condition" value=""/>
 <attrib name="org.eclipse.debug.core.id" value="org.eclipse.cdt.debug.core"/>
-<attrib name="org.eclipse.cdt.debug.core.installCount" value="0"/>
-<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="D:\workspace\tool_box_stm32\stm_lib\src\tht11.c"/>
-<attrib name="org.eclipse.cdt.debug.core.breakpointType" value="0"/>
-<attrib name="org.eclipse.cdt.debug.core.ignoreCount" value="0"/>
-<attrib name="org.eclipse.debug.core.enabled" value="true"/>
 <attrib name="workingset_name" value=""/>
-<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
-</marker>
-</breakpoint>
-<breakpoint enabled="true" persistant="true" registered="true">
-<resource path="/tool_box_stm32/stm_lib/src/dht11.c" type="1"/>
-<marker lineNumber="20" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
-<attrib name="message" value="Line breakpoint: tht11.c [line: 23]"/>
-<attrib name="org.eclipse.cdt.debug.core.condition" value=""/>
-<attrib name="org.eclipse.debug.core.id" value="org.eclipse.cdt.debug.core"/>
-<attrib name="org.eclipse.cdt.debug.core.installCount" value="0"/>
-<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="D:\workspace\tool_box_stm32\stm_lib\src\tht11.c"/>
+<attrib name="type" value="org.eclipse.cdt.debug.core.cLineBreakpointMarker"/>
+<attrib name="persistant" value="true"/>
 <attrib name="org.eclipse.cdt.debug.core.breakpointType" value="0"/>
-<attrib name="org.eclipse.cdt.debug.core.ignoreCount" value="0"/>
-<attrib name="org.eclipse.debug.core.enabled" value="true"/>
-<attrib name="workingset_name" value=""/>
 <attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint: one_wire.c [line: 4]"/>
+<attrib name="registered" value="true"/>
+<attrib name="path" value="/tool_box_stm32/stm_lib/src/one_wire.c"/>
+<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="D:\workspace\tool_box_stm32\stm_lib\src\one_wire.c"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.cdt.debug.core.ignoreCount" value="0"/>
 </marker>
 </breakpoint>
 </breakpoints>

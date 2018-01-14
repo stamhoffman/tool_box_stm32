@@ -6,6 +6,9 @@ FlagStatus PLL_ON;
 uint8_t source_clk;
 
 struct data dht11_data;
+struct data send;
+
+#define CLIENT // CLIENT or SERVER
 
 
 int main(void) {
@@ -22,31 +25,56 @@ int main(void) {
   dht11_data.number_of_world = 5;
   dht11_data.bit_order = 8;
 
-  while (1) {
-   dht11();
-   LCD_clrScr();
-   LCD_print("DHT11 sensor", 0, 0);
-   //LCD_print("H = ", 0, 2);
-   //lcd_out_number(dht11_data.world_1, 20, 2);
-   //LCD_print("%", 35, 2);
-   //LCD_print("T = ", 0, 3);
-   //lcd_out_number(dht11_data.world_4, 20, 3);
-   //LCD_print("C", 35, 3);
+  send.number_of_world = 5;
+  send.bit_order = 8;
 
-   lcd_out_number(dht11_data.world_1, 0, 1);
-   lcd_out_number(dht11_data.world_2, 0, 2);
-   lcd_out_number(dht11_data.world_3, 0, 3);
-   lcd_out_number(dht11_data.world_4, 0, 4);
-   lcd_out_number(dht11_data.world_4, 0, 5);
+  send.world_1 = 1;
+  send.world_2 = 2;
+  send.world_3 = 4;
+  send.world_4 = 8;
+
+  unpack_world(&send);
 
 
-   delay_sec(1);
+while (1) {
+
+#ifdef CLIENT
+	  dht11();
+	  GPIO_SetBits(GPIOB, GPIO_Pin_5);
+	  LCD_clrScr();
+	  LCD_print("DHT11 sensor", 0, 0);
+	  LCD_print("H = ", 0, 2);
+	  lcd_out_number(dht11_data.world_1, 20, 2);
+	  LCD_print("%", 35, 2);
+	  LCD_print("T = ", 0, 3);
+	  lcd_out_number(dht11_data.world_3, 20, 3);
+	  LCD_print("C", 35, 3);
+	  LCD_print("CRC = ", 0, 5);
+	  LCD_print(calc_crc(&dht11_data), 25, 5);
+	  GPIO_ResetBits(GPIOB, GPIO_Pin_5);
+	  delay_sec(1);
+#endif
+
+
+#ifdef DEBAG
+   //lcd_out_number(dht11_data.world_1, 0, 1);
+   //lcd_out_number(dht11_data.world_2, 0, 2);
+   //lcd_out_number(dht11_data.world_3, 0, 3);
+   //lcd_out_number(dht11_data.world_4, 0, 4);
+   //lcd_out_number(dht11_data.world_4, 0, 5);
+#endif
+
+#ifdef SERVER
+   while (((OUT_DATA->IDR) & (OUT_DATA_PIN)));
+   send_onewire();
+#endif
   }
 }
 
 void GPIO_Config(void) {
 
   onewire_port_init(DHTPORT, DHTPIN);
+  onewire_port_init(OUT_DATA,OUT_DATA_PIN);
 
   GPIO_InitTypeDef LCD_PORT;
   LCD_PORT.GPIO_Pin = GPIO_Pin_All;
@@ -103,15 +131,23 @@ void RCC_Config(void) {
 
 
 
-void dht11() {
-  #define BIT 40
+void dht11(void) {
   start_data_read(DHTPORT, DHTPIN);
   received_data(DHTPORT, DHTPIN, &dht11_data);
   pack_world(&dht11_data);
 }
 
-// void assert_failed(uint8_t *file, uint32_t line) {
-//   LCD_clrScr();
-//   lcd_out_number(*(uint32_t *)file, 0, 0);
-//   lcd_out_number(line, 0, 1);
-// }
+void send_onewire(void)
+{
+	start_data_send(OUT_DATA, OUT_DATA_PIN);
+	transend_data(OUT_DATA, OUT_DATA_PIN,&send);
+}
+
+#ifdef USE_FULL_ASSERT
+
+void assert_failed(uint8_t *file, uint32_t line) {
+   LCD_clrScr();
+   lcd_out_number(*(uint32_t *)file, 0, 0);
+   lcd_out_number(line, 0, 1);
+ }
+#endif

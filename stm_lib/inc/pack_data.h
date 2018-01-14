@@ -54,7 +54,17 @@ struct data {
 
 #pragma pack(pop)
 
+struct stack_data
+{
+	int itr_stack;
+	int ls;
+	struct data stk[100];
+};
+
+
 void pack_world(struct data *data);
-void calc_crc(struct data *data);
+void unpack_world(struct data *data);
+char *calc_crc(struct data *data);
 void push_bit(struct data *data, uint8_t bit, int value);
+int pop_bit(struct data *data,  uint8_t bit);
 void output_data(struct data *data, uint8_t bit);
