@@ -14,10 +14,9 @@ int main(void) {
   GPIO_Config();
 
   LCD_init();
-  LCD_print("Tool_Box_STM33", 0, 0);
+  LCD_print("Tool_Box_STM32", 0, 0);
   lcd_out_number(RCC_value.HCLK_Frequency, 0, 1);
   LCD_print("Hz", 50, 1);
-  delay_sec(1);
 
 
 #ifdef CLIENT
@@ -29,10 +28,10 @@ int main(void) {
   send.number_of_world = 5;
   send.bit_order = 8;
 
-  send.world_1 = 0;
-  send.world_2 = 0;
-  send.world_3 = 0;
-  send.world_4 = 0;
+  send.world_1 = 1;
+  send.world_2 = 1;
+  send.world_3 = 1;
+  send.world_4 = 1;
 
   unpack_world(&send);
 #endif
@@ -54,23 +53,18 @@ int main(void) {
 while (1) {
 
 #ifdef CLIENT
-	  GPIO_SetBits(GPIOB,GPIO_Pin_5);
-	  delay_us(10);
-	  GPIO_ResetBits(GPIOB,GPIO_Pin_5);
 	  dht11();
 	  LCD_clrScr();
 	  LCD_print("DHT11 sensor", 0, 0);
 	  LCD_print("H = ", 0, 2);
 	  lcd_out_number(dht11_data.world_1, 20, 2);
-	  LCD_print("%", 35, 2);
+	  LCD_print("%", 37, 2);
 	  LCD_print("T = ", 0, 3);
 	  lcd_out_number(dht11_data.world_3, 20, 3);
-	  LCD_print("C", 35, 3);
+	  LCD_print("C", 37, 3);
 	  LCD_print("CRC = ", 0, 5);
 	  LCD_print(calc_crc(&dht11_data), 25, 5);
-	  GPIO_ResetBits(GPIOB, GPIO_Pin_5);
 	  delay_sec(1);
-
 #endif
 
 
@@ -83,7 +77,7 @@ while (1) {
 #endif
 
 #ifdef SERVER
-   while (((OUT_DATA->IDR) & (OUT_DATA_PIN)));
+   while (((DHTPORT->IDR) & (DHTPIN)));
    send_onewire();
 #endif
   }
@@ -96,11 +90,11 @@ void GPIO_Config(void) {
 #endif
 
 #ifdef SERVER
-  onewire_port_init(OUT_DATA,OUT_DATA_PIN);
+  onewire_port_init(DHTPORT, DHTPIN);
 #endif
 
 #ifdef DEBAG
-  onewire_port_init(OUT_DATA,OUT_DATA_PIN);
+  onewire_port_init(DHTPORT,DHTPIN);
 #endif
 
   GPIO_InitTypeDef LCD_PORT;
@@ -164,8 +158,8 @@ void dht11(void) {
 
 void send_onewire(void)
 {
-	start_data_send(OUT_DATA, OUT_DATA_PIN);
-	transend_data(OUT_DATA, OUT_DATA_PIN,&send);
+	start_data_send(DHTPORT, DHTPIN);
+	transend_data(DHTPORT, DHTPIN,&send);
 }
 
 #ifdef USE_FULL_ASSERT
