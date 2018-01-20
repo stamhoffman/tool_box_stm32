@@ -24,20 +24,20 @@ void unpack_world(struct data *data)
 	int crc = 0;
 
 	if (data-> number_of_world >= 1)
-	   memcpy(&data->world_1 + 1, &data->world_1, sizeof(int));
+	   memcpy(&data->world_1 + 1, &data->world_1, sizeof(uint8_t));
 	if (data -> number_of_world >= 2)
-	   memcpy(&data->world_2 + 1, &data->world_2, sizeof(int));
+	   memcpy(&data->world_2 + 1, &data->world_2, sizeof(uint8_t));
 	if (data -> number_of_world >= 3)
-	   memcpy(&data->world_3 + 1, &data->world_3, sizeof(int));
+	   memcpy(&data->world_3 + 1, &data->world_3, sizeof(uint8_t));
 	if (data -> number_of_world >= 4)
-	   memcpy(&data->world_4 + 1, &data->world_4, sizeof(int));
+	   memcpy(&data->world_4 + 1, &data->world_4, sizeof(uint8_t));
 
 	if (data-> number_of_world == 3) crc = (data-> world_1 & data-> world_2);
 	if (data-> number_of_world == 4) crc = (data-> world_1 & data-> world_2 & data-> world_3);
 	if (data-> number_of_world == 5) crc = (data-> world_1 & data-> world_2 & data-> world_3 & data-> world_4);
 
 	if (data -> number_of_world >= 5)
-	   memcpy(&data->world_5 + 1, &crc, sizeof(char));
+	   memcpy(&data->world_5 + 1, &crc, sizeof(uint8_t));
 }
 
 

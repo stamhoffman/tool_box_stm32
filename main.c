@@ -28,10 +28,10 @@ int main(void) {
   send.number_of_world = 5;
   send.bit_order = 8;
 
-  send.world_1 = 1;
-  send.world_2 = 1;
-  send.world_3 = 1;
-  send.world_4 = 1;
+  send.world_1 = 20;
+  send.world_2 = 20;
+  send.world_3 = 20;
+  send.world_4 = 20;
 
   unpack_world(&send);
 #endif
@@ -58,10 +58,10 @@ while (1) {
 	  LCD_print("DHT11 sensor", 0, 0);
 	  LCD_print("H = ", 0, 2);
 	  lcd_out_number(dht11_data.world_1, 20, 2);
-	  LCD_print("%", 37, 2);
+	  LCD_print("%", 38, 2);
 	  LCD_print("T = ", 0, 3);
 	  lcd_out_number(dht11_data.world_3, 20, 3);
-	  LCD_print("C", 37, 3);
+	  LCD_print("C", 38, 3);
 	  LCD_print("CRC = ", 0, 5);
 	  LCD_print(calc_crc(&dht11_data), 25, 5);
 	  delay_sec(1);
