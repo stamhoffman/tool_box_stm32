@@ -36,17 +36,16 @@ int main(void) {
   unpack_world(&send);
 #endif
 
+#ifdef DEBUG
+
+
+#endif
+
+
 #ifdef DEBAG
   while(1)
   {
-		GPIOC -> CRH = 0b00110100010001000100010001000100; // "0" - up_down
-		GPIOC -> ODR = 0b0000000000000000;
-		delay_us(80);
-		GPIOC -> CRH = 0b01000100010001000100010001000100; // "1" - float
-		delay_us(80);
-		GPIO_SetBits(GPIOB,GPIO_Pin_5);
-		delay_us(10);
-		GPIO_ResetBits(GPIOB,GPIO_Pin_5);
+
   }
 #endif
 
@@ -147,7 +146,7 @@ void RCC_Config(void) {
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-
+  RCC_APB2PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE);
 }
 
 void dht11(void) {
@@ -170,3 +169,7 @@ void assert_failed(uint8_t *file, uint32_t line) {
    lcd_out_number(line, 0, 1);
  }
 #endif
+
+
+
+

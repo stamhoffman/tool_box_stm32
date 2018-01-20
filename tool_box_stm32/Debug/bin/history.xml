@@ -1,17 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="4.4.1 -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=tool_box_stm32.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\tool_box_stm32 -TC:\CooCox\CoIDE\configuration\ProgramData\tool_box_stm32/arm-gcc-link.ld -g">
-      <target file="tool_box_stm32.elf" lastModified="1610004d999">
-         <source file="..\obj\delay.o" lastModified="1610004d607"/>
-         <source file="..\obj\pack_data.o" lastModified="1610004d642"/>
-         <source file="..\obj\system_stm32f10x.o" lastModified="1610004d674"/>
-         <source file="..\obj\startup_stm32f10x_md.o" lastModified="1610004d691"/>
-         <source file="..\obj\stm32f10x_gpio.o" lastModified="1610004d6ce"/>
-         <source file="..\obj\main.o" lastModified="1610004d700"/>
-         <source file="..\obj\stm32f10x_rcc.o" lastModified="1610004d744"/>
-         <source file="..\obj\display.o" lastModified="1610004d787"/>
-         <source file="..\obj\misc.o" lastModified="1610004d7bb"/>
-         <source file="..\obj\one_wire.o" lastModified="1610004d7eb"/>
+      <target file="tool_box_stm32.elf" lastModified="16115a61879">
+         <source file="..\obj\delay.o" lastModified="16115a61456"/>
+         <source file="..\obj\pack_data.o" lastModified="16115a61495"/>
+         <source file="..\obj\bmp18c.o" lastModified="16115a614c9"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="16115a614fd"/>
+         <source file="..\obj\startup_stm32f10x_md.o" lastModified="16115a61519"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="16115a61557"/>
+         <source file="..\obj\main.o" lastModified="16115a6158b"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="16115a615d2"/>
+         <source file="..\obj\display.o" lastModified="16115a61619"/>
+         <source file="..\obj\misc.o" lastModified="16115a6164b"/>
+         <source file="..\obj\stm32f10x_i2c.o" lastModified="16115a61694"/>
+         <source file="..\obj\one_wire.o" lastModified="16115a616c9"/>
       </target>
    </processor>
 </history>
