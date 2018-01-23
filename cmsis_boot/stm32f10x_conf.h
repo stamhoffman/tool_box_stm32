@@ -67,7 +67,7 @@ void RCC_Config(void);
 void dht11(void);
 void send_onewire(void);
 
-#define SERVER // CLIENT or SERVER or DEBAG
+#define DEBUG // CLIENT or SERVER or DEBAG
 #define QUARZ
 
 
