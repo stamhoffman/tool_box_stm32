@@ -1,6 +1,8 @@
 
-#define BMP18C_ADDRESS 0x77 //0x77
+#define BMP18C_ADDRESS 0xEE
 
+#define read_data_bmp ((uint8_t)0x01)
+#define write_data_bmp ((uint8_t)0x00)
 
 #define AC1 0xAA
 #define AC2 0xAC
@@ -22,6 +24,42 @@ void start_bmp18c_rw(I2C_TypeDef* I2Cx, uint8_t transmissionDirection, uint8_t s
 
 void I2C_WriteData(I2C_TypeDef* I2Cx, uint8_t data);
 uint8_t I2C_ReadData(I2C_TypeDef* I2Cx);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  *

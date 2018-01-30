@@ -61,27 +61,20 @@ while (1) {
 
 
 #ifdef DEBUG
-   //lcd_out_number(dht11_data.world_1, 0, 1);
-   //lcd_out_number(dht11_data.world_2, 0, 2);
-   //lcd_out_number(dht11_data.world_3, 0, 3);
-   //lcd_out_number(dht11_data.world_4, 0, 4);
-   //lcd_out_number(dht11_data.world_4, 0, 5);
 
+	uint8_t data;
 	bmp18c_init(I2C1, 100000, GPIOB, GPIO_Pin_6, GPIO_Pin_7);
-	delay_sec(1);
-	start_bmp18c_rw(I2C1, I2C_Direction_Transmitter, BMP18C_ADDRESS);
-	delay_sec(1);
-
-	I2C_WriteData(I2C1, 0b11101110);
-	I2C_WriteData(I2C1, 0x);
-	uint8_t data = I2C_ReadData(I2C1);
-
+	delay_ms(20);
+	start_bmp18c_rw(I2C1, read_data_bmp, BMP18C_ADDRESS);
+	I2C_WriteData(I2C1, AC1);
 
    while(1)
    {
-	   LCD_clrScr();
-	   LCD_print("write", 0, 4);
-	   lcd_out_number(data, 0, 5);
+
+		data = I2C_ReadData(I2C1);
+		LCD_clrScr();
+		LCD_print("data", 0, 0);
+		lcd_out_number(data, 0, 1);
    }
 
 #endif

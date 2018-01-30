@@ -19,14 +19,9 @@ void bmp18c_init(I2C_TypeDef* I2Cx, uint32_t speed, GPIO_TypeDef* GPIOx, uint16_
 	GPIO_Init(GPIOx, &GPIO_BMP18C);
 	I2C_Cmd(I2Cx, ENABLE);
 
-	LCD_clrScr();
-	LCD_print("CMD", 0, 4);
-	delay_ms(500);
 }
 
-
 //transmissionDirection =  I2C_Direction_Transmitter or I2C_Direction_Receiver
-
 
 
 void start_bmp18c_rw(I2C_TypeDef* I2Cx, uint8_t transmissionDirection, uint8_t slaveAddress)
@@ -34,43 +29,69 @@ void start_bmp18c_rw(I2C_TypeDef* I2Cx, uint8_t transmissionDirection, uint8_t s
 	while(I2C_GetFlagStatus(I2Cx, I2C_FLAG_BUSY));
 	I2C_GenerateSTART(I2Cx, ENABLE);
 	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_MODE_SELECT));
-	I2C_Send7bitAddress(I2Cx, transmissionDirection,  slaveAddress);
+	I2C_Send7bitAddress(I2Cx, slaveAddress, transmissionDirection);
 
-//	if(transmissionDirection== I2C_Direction_Transmitter)
-//	{
-//	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-//	}
-//	if(transmissionDirection== I2C_Direction_Receiver)
-//	{
-//	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
-//	}
+	if(transmissionDirection== I2C_Direction_Transmitter)
+	{
+	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+	}
+	if(transmissionDirection== I2C_Direction_Receiver)
+	{
+	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
+	}
 
-	LCD_clrScr();
-	LCD_print("start", 0, 4);
-	delay_ms(500);
 }
 
 
 void I2C_WriteData(I2C_TypeDef* I2Cx, uint8_t data) // Просто вызываем готоваую функцию из SPL и ждем, пока данные улетят
 {
-I2C_SendData(I2Cx, data);
-while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-I2C_GenerateSTOP(I2Cx, ENABLE);
-
-LCD_clrScr();
-LCD_print("start write", 0, 4);
-delay_ms(500);
+	I2C_SendData(I2Cx, data);
+	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
 
 }
 
 
 uint8_t I2C_ReadData(I2C_TypeDef* I2Cx) // Тут картина похожа, как только данные пришли быстренько считываем их и возвращаем
 {
-uint8_t data;
-while( !I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED) );
-data = I2C_ReceiveData(I2Cx);
-I2C_GenerateSTOP(I2Cx, ENABLE);
+	uint8_t data;
+	LCD_print("start_read", 0, 5);
+    while( !I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED) );
+    data = I2C_ReceiveData(I2Cx);
+    LCD_print("end_read", 0, 5);
+    return data;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  *

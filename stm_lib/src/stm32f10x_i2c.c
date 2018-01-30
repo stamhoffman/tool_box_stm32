@@ -573,6 +573,7 @@ void I2C_SendData(I2C_TypeDef* I2Cx, uint8_t Data)
   assert_param(IS_I2C_ALL_PERIPH(I2Cx));
   /* Write in the DR register the data to be sent */
   I2Cx->DR = Data;
+  lcd_out_number(Data, 0, 3);
 }
 
 /**
