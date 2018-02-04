@@ -98,3 +98,14 @@ void send_onewire(void);
 #endif /* __STM32F10x_CONF_H */
 
 /******************* (C) COPYRIGHT 2010 STMicroelectronics *****END OF FILE****/
+
+#define DEBUG_PRINT
+
+//void DEBUG_PRINT(char *)
+//{
+//#ifdef DEBUG_PRINT
+//
+//#endif
+//}
+
+

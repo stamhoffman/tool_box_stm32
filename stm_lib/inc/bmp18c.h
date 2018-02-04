@@ -23,7 +23,8 @@ void bmp18c_init(I2C_TypeDef* I2Cx, uint32_t speed, GPIO_TypeDef* GPIOx, uint16_
 void start_bmp18c_rw(I2C_TypeDef* I2Cx, uint8_t transmissionDirection, uint8_t slaveAddress);
 
 void I2C_WriteData(I2C_TypeDef* I2Cx, uint8_t data);
-uint8_t I2C_ReadData(I2C_TypeDef* I2Cx);
+
+uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, uint16_t *received_data, uint8_t size_data_byte);
 
 
 
