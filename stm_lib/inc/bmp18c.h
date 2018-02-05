@@ -1,20 +1,44 @@
-
 #define BMP18C_ADDRESS 0xEE
 
 #define read_data_bmp ((uint8_t)0x01)
 #define write_data_bmp ((uint8_t)0x00)
 
 #define AC1 0xAA
+#define AC1_ 0xAB
+
 #define AC2 0xAC
+#define AC2_ 0xAD
+
 #define AC3 0xAE
+#define AC3_ 0xAF
+
 #define AC4 0xB0
+#define AC4_ 0xB1
+
 #define AC5 0xB2
+#define AC5_ 0xB3
+
 #define AC6 0xB4
+#define AC6_ 0xB5
+
 #define VB1 0xB6
+#define VB1_ 0xB7
+
 #define VB2 0xB8
+#define VB2_ 0xB9
+
 #define MB 0xBA
+#define MB_ 0xBB
+
 #define MC 0xBC
+#define MC_ 0xBD
+
 #define MD 0xBE
+#define MD_ 0xBF
+
+
+#define TEMP 0xF6
+#define TEMP_ 0xF7
 
 struct data bmp18c;
 
@@ -24,8 +48,11 @@ void start_bmp18c_rw(I2C_TypeDef* I2Cx, uint8_t transmissionDirection, uint8_t s
 
 void I2C_WriteData(I2C_TypeDef* I2Cx, uint8_t data);
 
-uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, uint16_t *received_data, uint8_t size_data_byte);
+uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, uint8_t *received_data, uint8_t size_data_byte);
 
+void read_temperature();
+
+void read_bar();
 
 
 

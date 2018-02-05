@@ -62,7 +62,7 @@ void I2C_WriteData(I2C_TypeDef* I2Cx, uint8_t data)
 }
 
 
-uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, uint16_t *received_data, uint8_t size_data_byte)
+uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, uint8_t *received_data, uint8_t size_data_byte)
 {
 	#ifdef DEBUG_PRINT
 	LCD_print("I2C_Read in ", 0, 5);
@@ -81,6 +81,8 @@ uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, 
 	I2Cx->DR = registr;
 	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
 
+	if(size_data_byte == 1) delay_ms(5);
+
 	I2C_GenerateSTART(I2Cx, ENABLE);
 	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_MODE_SELECT)); // ѕока не удалось стать мастером на линии
 
@@ -90,22 +92,27 @@ uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, 
 	while( !I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED));
 	*received_data = ((uint8_t)I2Cx->DR);
 
-	uint8_t count = 0;
-
-	for(count = size_data_byte; count > 0; count++)
-	{
-
-	}
-
-
 	I2C_AcknowledgeConfig(I2Cx, DISABLE);
 	I2C_GenerateSTOP(I2Cx, ENABLE);
 
 	while(I2C_GetFlagStatus(I2Cx, I2C_FLAG_BUSY));
 
+	uint8_t count = 0;
+
     return count;
 }
 
+void read_calib()
+{
+
+
+}
+
+
+void read_temperature()
+{
+
+}
 
 
 

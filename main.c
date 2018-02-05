@@ -62,36 +62,89 @@ while (1) {
 
 #ifdef DEBUG
 
-	uint16_t data[22];
-
+	uint8_t data[26];
 
 	bmp18c_init(I2C1, 100000, GPIOB, GPIO_Pin_6, GPIO_Pin_7);
 	delay_ms(20);
+
 	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC1, &data[0], 0);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC2, &data[1], 0);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC3, &data[2], 0);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC4, &data[3], 0);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC5, &data[4], 0);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC6, &data[5], 0);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, VB1, &data[6], 0);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, VB2, &data[7], 0);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, MB, &data[8], 0);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, MC, &data[9], 0);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, MD, &data[10], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC1_, &data[1], 0);
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC2, &data[2], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC2_, &data[3], 0);
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC3, &data[4], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC3_, &data[5], 0);
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC4, &data[6], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC4_, &data[7], 0);
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC5, &data[8], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC5_, &data[9], 0);
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC6, &data[10], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, AC6_, &data[11], 0);
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, VB1, &data[12], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, VB1_, &data[13], 0);
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, VB2, &data[14], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, VB2_, &data[15], 0);
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, MB, &data[16], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, MB_, &data[17], 0);
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, MC, &data[18], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, MC_, &data[19], 0);
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, MD, &data[20], 0);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, MD_, &data[21], 0);
+
+	short ac1 = (data[0] << 8) | data[1];
+	short ac2 = (data[2] << 8) |data[3];
+	short ac3 = (data[4] << 8) |data[5];
+	unsigned short ac4 = (data[6] << 8) | data[7];
+	unsigned short ac5 = (data[8] << 8) | data[9];
+	unsigned short ac6 = (data[10] << 8) | data[11];
+	short vb1 = (data[12] << 8) | data[13];
+	short vb2 = (data[14] << 8) | data[15];
+	short mb = (data[16] << 8) | data[17];
+	short mc = (data[18] << 8) | data[19];
+	short md = (data[20] << 8) | data[21];
+
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, TEMP, &data[22], 1);
+	I2C_ReadData(I2C1, BMP18C_ADDRESS, TEMP_, &data[23], 1);
+
+	long temp;
 
 	LCD_clrScr();
-	LCD_print("AC1", 0, 0); lcd_out_number(data[0], 20, 0);
-	LCD_print("AC2", 0, 1); lcd_out_number(data[1], 20, 1);
-	LCD_print("AC3", 0, 2); lcd_out_number(data[2], 20, 2);
-	LCD_print("AC4", 0, 3); lcd_out_number(data[3], 20, 3);
-	LCD_print("AC5", 0, 4); lcd_out_number(data[4], 20, 4);
-	LCD_print("AC6", 0, 5); lcd_out_number(data[5], 20, 5);
+	temp = (data[22] << 8) + data[23];
+	LCD_print("TEMP =", 0, 0); lcd_out_number(temp, 35, 0);
 
-	LCD_print("VB1", 40, 0); lcd_out_number(data[0], 60, 0);
-	LCD_print("VB2", 40, 1); lcd_out_number(data[1], 60, 1);
-	LCD_print("MB", 40, 2); lcd_out_number(data[2], 60, 2);
-	LCD_print("MC", 40, 3); lcd_out_number(data[3], 60, 3);
-	LCD_print("MD", 40, 4); lcd_out_number(data[4], 60, 4);
+	//LCD_clrScr();
+//	LCD_print("AC1=", 0, 0); lcd_out_number(ac1, 25, 0);
+//	LCD_print("AC2=", 0, 1); lcd_out_number(ac2, 25, 1);
+//	LCD_print("AC3=", 0, 2); lcd_out_number(ac3, 25, 2);
+//	LCD_print("AC4", 0, 3); lcd_out_number(ac4, 25, 3);
+//	LCD_print("AC5", 0, 4); lcd_out_number(ac5, 25, 4);
+//	LCD_print("AC6", 0, 5); lcd_out_number(ac6, 25, 5);
+//
+//	LCD_print("VB1=", 0, 0); lcd_out_number(vb1, 25, 0);
+//	LCD_print("VB2=", 0, 1); lcd_out_number(vb2, 25, 1);
+//	LCD_print("MB=", 0, 2); lcd_out_number(mb, 25, 2);
+//	LCD_print("MC", 0, 3); lcd_out_number(mc, 25, 3);
+//	LCD_print("MD", 0, 4); lcd_out_number(md, 25, 4);
+
+
+
+
+
+
+//	LCD_print("VB1", 40, 0); lcd_out_number(data[0], 60, 0);
+//	LCD_print("VB2", 40, 1); lcd_out_number(data[1], 60, 1);
+//	LCD_print("MB", 40, 2); lcd_out_number(data[2], 60, 2);
+//	LCD_print("MC", 40, 3); lcd_out_number(data[3], 60, 3);
+//	LCD_print("MD", 40, 4); lcd_out_number(data[4], 60, 4);
 
    while(1)
    {
