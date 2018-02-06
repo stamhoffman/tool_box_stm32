@@ -112,14 +112,23 @@ while (1) {
 	short mc = (data[18] << 8) | data[19];
 	short md = (data[20] << 8) | data[21];
 
+	I2C_WriteData(I2C1, BMP18C_ADDRESS, TEMP_CR, TEMP_CR_VAL);
+	delay_ms(100);
 	I2C_ReadData(I2C1, BMP18C_ADDRESS, TEMP, &data[22], 1);
 	I2C_ReadData(I2C1, BMP18C_ADDRESS, TEMP_, &data[23], 1);
 
 	long temp;
-
 	LCD_clrScr();
 	temp = (data[22] << 8) + data[23];
-	LCD_print("TEMP =", 0, 0); lcd_out_number(temp, 35, 0);
+	double X1 = (temp - ac6) * ac5 / 32768;
+	double X2 = mc * 2048 / (X1 + md);
+	double B5 = X1 + X2;
+	double T = (B5 + 8) / 16;
+	T = T / 10;
+	long T_ = T % 10.0;
+
+	LCD_print("BMP18C_sensor", 0, 0);
+	LCD_print("TEMP =", 0, 1); lcd_out_number(T, 40, 1);LCD_print(",", 50, 1); lcd_out_number(T_, 55, 1);
 
 	//LCD_clrScr();
 //	LCD_print("AC1=", 0, 0); lcd_out_number(ac1, 25, 0);

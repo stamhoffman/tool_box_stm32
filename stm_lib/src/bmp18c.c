@@ -20,56 +20,9 @@ void bmp18c_init(I2C_TypeDef* I2Cx, uint32_t speed, GPIO_TypeDef* GPIOx, uint16_
 	I2C_Cmd(I2Cx, ENABLE);
 }
 
-//transmissionDirection =  I2C_Direction_Transmitter or I2C_Direction_Receiver
 
-void I2C_WriteData(I2C_TypeDef* I2Cx, uint8_t data)
+uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, uint8_t *received_data, uint8_t number_of_bits)
 {
-	#ifdef DEBUG_PRINT
-	LCD_print("I2C_Write in  ", 0, 5);
-	GPIO_SetBits(GPIOB, GPIO_Pin_5);
-	GPIO_ResetBits(GPIOB, GPIO_Pin_5);
-	#endif
-
-	I2Cx->DR = data;
-	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-
-
-//	I2C_GenerateSTART(I2Cx, ENABLE);
-//		while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_MODE_SELECT));
-//	I2C_Send7bitAddress(I2Cx, HW_address, I2C_Direction_Transmitter);
-//		while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-//	I2C_SendData(I2Cx, addr);
-//		while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-//	I2C_SendData(I2Cx, data);
-//		while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-//	I2C_GenerateSTOP(I2Cx, ENABLE);
-//		while(I2C_GetFlagStatus(I2Cx, I2C_FLAG_BUSY));
-
-
-//
-//	I2C_GenerateSTART(I2Cx, ENABLE);
-//	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_MODE_SELECT));
-//	I2C_Send7bitAddress(I2Cx, HW_address, I2C_Direction_Transmitter);
-//	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-//	while(n_data--) {
-//		I2C_SendData(I2Cx, *data++);
-//		while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-//	}
-//	I2C_GenerateSTOP(I2Cx, ENABLE);
-//	while(I2C_GetFlagStatus(I2Cx, I2C_FLAG_BUSY));
-
-
-}
-
-
-uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, uint8_t *received_data, uint8_t size_data_byte)
-{
-	#ifdef DEBUG_PRINT
-	LCD_print("I2C_Read in ", 0, 5);
-	GPIO_SetBits(GPIOB, GPIO_Pin_5);
-	GPIO_ResetBits(GPIOB, GPIO_Pin_5);
-	#endif
-
 	while(I2C_GetFlagStatus(I2Cx, I2C_FLAG_BUSY)); // Пока линия занята
 
 	I2C_GenerateSTART(I2Cx, ENABLE);
@@ -80,8 +33,6 @@ uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, 
 
 	I2Cx->DR = registr;
 	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-
-	if(size_data_byte == 1) delay_ms(5);
 
 	I2C_GenerateSTART(I2Cx, ENABLE);
 	while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_MODE_SELECT)); // Пока не удалось стать мастером на линии
@@ -99,19 +50,24 @@ uint8_t I2C_ReadData(I2C_TypeDef* I2Cx, uint8_t slaveAddress,  uint8_t registr, 
 
 	uint8_t count = 0;
 
-    return count;
-}
-
-void read_calib()
-{
-
-
+    return 0;
 }
 
 
-void read_temperature()
+int I2C_WriteData(I2C_TypeDef* I2Cx,  uint8_t slaveAddress, uint8_t registr, uint8_t transend_data)
 {
+	I2C_GenerateSTART(I2Cx, ENABLE);
+		while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_MODE_SELECT));
+	I2C_Send7bitAddress(I2Cx, slaveAddress, I2C_Direction_Transmitter);
+		while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+	I2C_SendData(I2Cx, registr);
+		while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+	I2C_SendData(I2Cx, transend_data);
+		while(!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+	I2C_GenerateSTOP(I2Cx, ENABLE);
+		while(I2C_GetFlagStatus(I2Cx, I2C_FLAG_BUSY));
 
+	return 0;
 }
 
 
