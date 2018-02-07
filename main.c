@@ -125,10 +125,9 @@ while (1) {
 	double B5 = X1 + X2;
 	double T = (B5 + 8) / 16;
 	T = T / 10;
-	long T_ = T % 10.0;
 
-	LCD_print("BMP18C_sensor", 0, 0);
-	LCD_print("TEMP =", 0, 1); lcd_out_number(T, 40, 1);LCD_print(",", 50, 1); lcd_out_number(T_, 55, 1);
+	LCD_print("BMP18C_sensors", 0, 0);
+	LCD_print("TEMP =", 0, 1); lcd_out_number(T, 40, 1);
 
 	//LCD_clrScr();
 //	LCD_print("AC1=", 0, 0); lcd_out_number(ac1, 25, 0);
@@ -143,10 +142,6 @@ while (1) {
 //	LCD_print("MB=", 0, 2); lcd_out_number(mb, 25, 2);
 //	LCD_print("MC", 0, 3); lcd_out_number(mc, 25, 3);
 //	LCD_print("MD", 0, 4); lcd_out_number(md, 25, 4);
-
-
-
-
 
 
 //	LCD_print("VB1", 40, 0); lcd_out_number(data[0], 60, 0);

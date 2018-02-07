@@ -1,38 +1,41 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F103RB -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -DSUPPORT_CPLUSPLUS -ID:\workspace\tool_box_stm32\stm_lib -ID:\workspace -ID:\workspace\tool_box_stm32\cmsis -ID:\workspace\tool_box_stm32 -ID:\workspace\tool_box_stm32\cmsis_boot -ID:\workspace\tool_box_stm32\stm_lib\inc">
-      <target file="display.o" lastModified="1616d71f13d">
-         <source file="..\..\..\stm_lib\src\display.c" lastModified="160eb877fc6"/>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F103RB -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -DSUPPORT_CPLUSPLUS -IZ:\home\stam\workspace\tool_box_stm32\cmsis -IZ:\home\stam\workspace -IZ:\home\stam\workspace\tool_box_stm32\stm_lib -IZ:\home\stam\workspace\tool_box_stm32 -IZ:\home\stam\workspace\tool_box_stm32\stm_lib\inc -IZ:\home\stam\workspace\tool_box_stm32\cmsis_boot">
+      <target file="display.o" lastModified="161719e515b">
+         <source file="..\..\..\stm_lib\src\display.c" lastModified="161688d6f1b"/>
       </target>
-      <target file="stm32f10x_i2c.o" lastModified="1616d71f1b8">
-         <source file="..\..\..\stm_lib\src\stm32f10x_i2c.c" lastModified="16160b96480"/>
+      <target file="stm32f10x_i2c.o" lastModified="161719e5457">
+         <source file="..\..\..\stm_lib\src\stm32f10x_i2c.c" lastModified="161688d6f1b"/>
       </target>
-      <target file="one_wire.o" lastModified="1616d71f1e7">
-         <source file="..\..\..\stm_lib\src\one_wire.c" lastModified="160fb68dbaa"/>
+      <target file="one_wire.o" lastModified="161719e5593">
+         <source file="..\..\..\stm_lib\src\one_wire.c" lastModified="161688d6f1b"/>
       </target>
-      <target file="system_stm32f10x.o" lastModified="1616d71efe0">
-         <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="160effb7e6e"/>
+      <target file="system_stm32f10x.o" lastModified="161719e4a57">
+         <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="161688d6f0f"/>
       </target>
-      <target file="stm32f10x_gpio.o" lastModified="1616d71f036">
-         <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="160effb9ae3"/>
+      <target file="main.o" lastModified="161719e4e5b">
+         <source file="..\..\..\main.c" lastModified="161719b2b19"/>
       </target>
-      <target file="bmp18c.o" lastModified="1616d71efa8">
-         <source file="..\..\..\stm_lib\src\bmp18c.c" lastModified="1616d460479"/>
+      <target file="stm32f10x_gpio.o" lastModified="161719e4c97">
+         <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="161688d6f1b"/>
       </target>
-      <target file="stm32f10x_rcc.o" lastModified="1616d71f0ec">
-         <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="160effb972c"/>
+      <target file="bmp18c.o" lastModified="161719e490b">
+         <source file="..\..\..\stm_lib\src\bmp18c.c" lastModified="1617174152e"/>
       </target>
-      <target file="pack_data.o" lastModified="1616d71ef78">
-         <source file="..\..\..\stm_lib\src\pack_data.c" lastModified="16100014d5d"/>
+      <target file="stm32f10x_rcc.o" lastModified="161719e4feb">
+         <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="161688d6f1b"/>
       </target>
-      <target file="delay.o" lastModified="1616d71ef3c">
-         <source file="..\..\..\stm_lib\src\delay.c" lastModified="160eb877fc6"/>
+      <target file="pack_data.o" lastModified="161719e47d3">
+         <source file="..\..\..\stm_lib\src\pack_data.c" lastModified="161688d6f1b"/>
       </target>
-      <target file="startup_stm32f10x_md.o" lastModified="1616d71eff8">
-         <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="160effb7e6e"/>
+      <target file="delay.o" lastModified="161719e467f">
+         <source file="..\..\..\stm_lib\src\delay.c" lastModified="161688d6f1b"/>
       </target>
-      <target file="misc.o" lastModified="1616d71f16f">
-         <source file="..\..\..\stm_lib\src\misc.c" lastModified="160effc1215"/>
+      <target file="startup_stm32f10x_md.o" lastModified="161719e4b3b">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="161688d6f0b"/>
+      </target>
+      <target file="misc.o" lastModified="161719e52b7">
+         <source file="..\..\..\stm_lib\src\misc.c" lastModified="161688d6f1b"/>
       </target>
    </processor>
 </history>

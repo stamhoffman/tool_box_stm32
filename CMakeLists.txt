@@ -1,11 +1,13 @@
+set(MCU_FAMILY STM32F1xx)
+set(MCU_LINE STM32F103xB)
+set(LINKER_SCRIPT STM32F103RBTx_FLASH.ld)
+#add_definitions(DSTM32F10X_MD)
+
 cmake_minimum_required(VERSION 3.5.0)
 project(tool_box_stm32 C ASM)
 include(stm32f103rbt6.cmake)
 
-
-set(CMAKE_VERBOSE_M‌​AKEFILE ON)
-
-add_definitions(-DSTM32F10X_MD)
+#set(CMAKE_VERBOSE_M‌​AKEFILE ON)
 
 file(GLOB_RECURSE SRC stm_lib/src/*.c)
 file(GLOB_RECURSE MAIN main.c)
@@ -23,6 +25,8 @@ target_link_libraries(${PROJECT_NAME}.elf CMSIS)
 
 set(HEX_FILE ${PROJECT_SOURCE_DIR}/build/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_SOURCE_DIR}/build/${PROJECT_NAME}.bin)
+
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Map=${PROJECT_SOURCE_DIR}/build/${PROJECT_NAME}.map")
 
 add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
          COMMAND ${CMAKE_OBJCOPY} -Oihex $<TARGET_FILE:${PROJECT_NAME}.elf> ${HEX_FILE}
