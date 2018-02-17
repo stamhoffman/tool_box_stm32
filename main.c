@@ -115,6 +115,7 @@ while (1) {
 	long temp;
 	long prescure;
 
+
 	while(1)
    {
 		I2C_WriteData(I2C1, BMP18C_ADDRESS, TEMP_CR, TEMP_CR_VAL);

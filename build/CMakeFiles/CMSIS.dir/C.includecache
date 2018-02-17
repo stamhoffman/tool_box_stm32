@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -26,6 +26,8 @@ cmsis_iar.h
 cmsis_ccs.h
 -
 
+../stm_lib/inc/bmp18c.h
+
 ../stm_lib/inc/delay.h
 
 ../stm_lib/inc/display.h
@@ -36,6 +38,10 @@ stm32f10x_conf.h
 stdint.h
 -
 
+../stm_lib/inc/misc.h
+stm32f10x.h
+../stm_lib/inc/stm32f10x.h
+
 ../stm_lib/inc/one_wire.h
 
 ../stm_lib/inc/pack_data.h
@@ -43,6 +49,10 @@ stm32f10x_conf.h
 -
 
 ../stm_lib/inc/stm32f10x_gpio.h
+stm32f10x.h
+../stm_lib/inc/stm32f10x.h
+
+../stm_lib/inc/stm32f10x_i2c.h
 stm32f10x.h
 ../stm_lib/inc/stm32f10x.h
 
@@ -63,14 +73,16 @@ stm32f10x_conf.h
 /home/stam/workspace/tool_box_stm32/cmsis_boot/stm32f10x_conf.h
 
 /home/stam/workspace/tool_box_stm32/cmsis_boot/stm32f10x_conf.h
-stm32f10x_gpio.h
-/home/stam/workspace/tool_box_stm32/cmsis_boot/stm32f10x_gpio.h
-stm32f10x_rcc.h
-/home/stam/workspace/tool_box_stm32/cmsis_boot/stm32f10x_rcc.h
 stdbool.h
 /home/stam/workspace/tool_box_stm32/cmsis_boot/stdbool.h
 string.h
-/home/stam/workspace/tool_box_stm32/cmsis_boot/string.h
+-
+stm32f10x_rcc.h
+/home/stam/workspace/tool_box_stm32/cmsis_boot/stm32f10x_rcc.h
+stm32f10x_gpio.h
+/home/stam/workspace/tool_box_stm32/cmsis_boot/stm32f10x_gpio.h
+misc.h
+/home/stam/workspace/tool_box_stm32/cmsis_boot/misc.h
 delay.h
 /home/stam/workspace/tool_box_stm32/cmsis_boot/delay.h
 font.h
@@ -81,6 +93,10 @@ pack_data.h
 /home/stam/workspace/tool_box_stm32/cmsis_boot/pack_data.h
 one_wire.h
 /home/stam/workspace/tool_box_stm32/cmsis_boot/one_wire.h
+stm32f10x_i2c.h
+/home/stam/workspace/tool_box_stm32/cmsis_boot/stm32f10x_i2c.h
+bmp18c.h
+/home/stam/workspace/tool_box_stm32/cmsis_boot/bmp18c.h
 
 /home/stam/workspace/tool_box_stm32/cmsis_boot/system_stm32f10x.c
 stm32f10x.h
