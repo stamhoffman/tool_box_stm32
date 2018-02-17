@@ -64,7 +64,7 @@
 </breakpoint>
 <breakpoint enabled="true" persistant="true" registered="true">
 <resource path="/tool_box_stm32/main.c" type="1"/>
-<marker lineNumber="161" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
+<marker lineNumber="168" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
 <attrib name="enabled" value="true"/>
 <attrib name="org.eclipse.cdt.debug.core.condition" value=""/>
 <attrib name="org.eclipse.debug.core.id" value="org.eclipse.cdt.debug.core"/>
@@ -104,7 +104,7 @@
 </breakpoint>
 <breakpoint enabled="true" persistant="true" registered="true">
 <resource path="/tool_box_stm32/main.c" type="1"/>
-<marker lineNumber="132" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
+<marker lineNumber="145" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
 <attrib name="enabled" value="true"/>
 <attrib name="org.eclipse.cdt.debug.core.condition" value=""/>
 <attrib name="org.eclipse.debug.core.id" value="org.eclipse.cdt.debug.core"/>
@@ -114,7 +114,7 @@
 <attrib name="persistant" value="true"/>
 <attrib name="org.eclipse.cdt.debug.core.breakpointType" value="0"/>
 <attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
-<attrib name="message" value="Line breakpoint: main.c [line: 109]"/>
+<attrib name="message" value="Line breakpoint: main.c [line: 146]"/>
 <attrib name="registered" value="true"/>
 <attrib name="path" value="/tool_box_stm32/main.c"/>
 <attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="D:\workspace\tool_box_stm32\main.c"/>

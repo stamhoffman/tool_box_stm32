@@ -62,7 +62,7 @@ while (1) {
 
 #ifdef DEBUG
 
-	uint8_t data[26];
+	uint8_t data[27];
 
 	bmp18c_init(I2C1, 100000, GPIOB, GPIO_Pin_6, GPIO_Pin_7);
 	delay_ms(20);
@@ -112,51 +112,58 @@ while (1) {
 	short mc = (data[18] << 8) | data[19];
 	short md = (data[20] << 8) | data[21];
 
-	I2C_WriteData(I2C1, BMP18C_ADDRESS, TEMP_CR, TEMP_CR_VAL);
-	delay_ms(100);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, TEMP, &data[22], 1);
-	I2C_ReadData(I2C1, BMP18C_ADDRESS, TEMP_, &data[23], 1);
-
 	long temp;
-	LCD_clrScr();
-	temp = (data[22] << 8) + data[23];
-	double X1 = (temp - ac6) * ac5 / 32768;
-	double X2 = mc * 2048 / (X1 + md);
-	double B5 = X1 + X2;
-	double T = (B5 + 8) / 16;
-	T = T / 10;
-	long T_ = T % 10.0;
+	long prescure;
 
-	LCD_print("BMP18C_sensor", 0, 0);
-	LCD_print("TEMP =", 0, 1); lcd_out_number(T, 40, 1);LCD_print(",", 50, 1); lcd_out_number(T_, 55, 1);
-
-	//LCD_clrScr();
-//	LCD_print("AC1=", 0, 0); lcd_out_number(ac1, 25, 0);
-//	LCD_print("AC2=", 0, 1); lcd_out_number(ac2, 25, 1);
-//	LCD_print("AC3=", 0, 2); lcd_out_number(ac3, 25, 2);
-//	LCD_print("AC4", 0, 3); lcd_out_number(ac4, 25, 3);
-//	LCD_print("AC5", 0, 4); lcd_out_number(ac5, 25, 4);
-//	LCD_print("AC6", 0, 5); lcd_out_number(ac6, 25, 5);
-//
-//	LCD_print("VB1=", 0, 0); lcd_out_number(vb1, 25, 0);
-//	LCD_print("VB2=", 0, 1); lcd_out_number(vb2, 25, 1);
-//	LCD_print("MB=", 0, 2); lcd_out_number(mb, 25, 2);
-//	LCD_print("MC", 0, 3); lcd_out_number(mc, 25, 3);
-//	LCD_print("MD", 0, 4); lcd_out_number(md, 25, 4);
-
-
-
-
-
-
-//	LCD_print("VB1", 40, 0); lcd_out_number(data[0], 60, 0);
-//	LCD_print("VB2", 40, 1); lcd_out_number(data[1], 60, 1);
-//	LCD_print("MB", 40, 2); lcd_out_number(data[2], 60, 2);
-//	LCD_print("MC", 40, 3); lcd_out_number(data[3], 60, 3);
-//	LCD_print("MD", 40, 4); lcd_out_number(data[4], 60, 4);
-
-   while(1)
+	while(1)
    {
+		I2C_WriteData(I2C1, BMP18C_ADDRESS, TEMP_CR, TEMP_CR_VAL);
+			delay_ms(100);
+			I2C_ReadData(I2C1, BMP18C_ADDRESS, TEMP, &data[22], 1);
+			I2C_ReadData(I2C1, BMP18C_ADDRESS, TEMP_, &data[23], 1);
+
+			I2C_WriteData(I2C1, BMP18C_ADDRESS, PRESCURE_CR, PRESCURE_CR_VAL);
+			delay_ms(100);
+			I2C_ReadData(I2C1, BMP18C_ADDRESS, PRESCURE, &data[24], 1);
+			I2C_ReadData(I2C1, BMP18C_ADDRESS, PRESCURE_, &data[25], 1);
+			I2C_ReadData(I2C1, BMP18C_ADDRESS, PRESCURE_A, &data[26], 1);
+
+			int oss = 0;
+			temp = (data[22] << 8) + data[23];
+			prescure = (data[24]<<16 + data[25]<<8 + data[26]) >> (8 - oss);
+
+			double X1 = (temp - ac6) * ac5 / 32768;
+			double X2 = mc * 2048 / (X1 + md);
+			double B5 = X1 + X2;
+			double T = (B5 + 8) / 16;
+			int Cel = T;
+			int Des = (int)((T - Cel) * 100.0);
+
+			LCD_clrScr();
+			LCD_print("BMP18C_sensor", 0, 0);
+			LCD_print("TEMP =", 0, 1); lcd_out_number(Cel, 40, 1);LCD_print(",", 52, 1); lcd_out_number(Des, 57, 1); LCD_print("C", 70, 1);
+
+			long B6 = B5 - 4000;
+			X1 = (VB2 * (B6 * B6 / 4096)) / 2048;
+			X2 = (ac2 * B6) / 2048;
+			long X3 = (X1 + X2);
+			long B3 = ((ac1 * 4 + X3) << oss + 2)/ 4;
+			X1 = AC3 * B6 / 8192;
+			X2 = (vb1 * (B6 * B6 / 4096 )) / 65536;
+			X3 = ((X1 + X2) + 2) / 4;
+			unsigned long B4 = ac4 * (unsigned long)(X3 + 32768) / 32768;
+			unsigned long B7 = ((unsigned long)prescure - B3) * (50000 >> oss);
+			long P;
+			if (B7 < 0x80000000) P = (B7 * 2) / B4;
+			else P = (B7 / B4) * 2;
+			X1 = (P / 256 ) * (P / 256 );
+			X1 = (X1 * 3038) / 65536;
+			X2 = (-7357 * P) / 65536;
+			P = P + (X1 + X2 + 3791) / 16;
+
+
+			LCD_print("PRESSURE", 0, 2);
+			LCD_print("P =", 0, 3); lcd_out_number(P, 20, 3);LCD_print(",", 57, 3); lcd_out_number(Des, 62, 3); LCD_print("P", 74, 3);
 
    }
 

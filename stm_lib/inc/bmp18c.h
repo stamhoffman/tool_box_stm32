@@ -43,6 +43,14 @@
 #define TEMP_CR 0xF4
 #define TEMP_CR_VAL 0x2E
 
+#define PRESCURE_CR 0xF4
+#define PRESCURE_CR_VAL 0x34
+
+#define PRESCURE 0xF6
+#define PRESCURE_ 0xF7
+#define PRESCURE_A 0xF8
+
+
 struct data bmp18c;
 
 void bmp18c_init(I2C_TypeDef* I2Cx, uint32_t speed, GPIO_TypeDef* GPIOx, uint16_t CLK_BMP18C,  uint16_t DATA_BMP18C);

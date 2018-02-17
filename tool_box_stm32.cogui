@@ -18,26 +18,26 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/workspace/tool_box_stm32/main.c" title="main.c" tooltip="D:/workspace/tool_box_stm32/main.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tool_box_stm32/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3243" selectionTopPixel="1455"/>
-</editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="bmp18c.c" partName="bmp18c.c" path="D:/workspace/tool_box_stm32/stm_lib/src/bmp18c.c" title="bmp18c.c" tooltip="D:/workspace/tool_box_stm32/stm_lib/src/bmp18c.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tool_box_stm32/stm_lib/src/bmp18c.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1870" selectionTopPixel="3371"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7074" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="bmp18c.h" partName="bmp18c.h" path="D:/workspace/tool_box_stm32/stm_lib/inc/bmp18c.h" title="bmp18c.h" tooltip="D:/workspace/tool_box_stm32/stm_lib/inc/bmp18c.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tool_box_stm32/stm_lib/inc/bmp18c.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="624" selectionTopPixel="405"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="682" selectionTopPixel="225"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_i2c.c" partName="stm32f10x_i2c.c" path="D:/workspace/tool_box_stm32/stm_lib/src/stm32f10x_i2c.c" title="stm32f10x_i2c.c" tooltip="D:/workspace/tool_box_stm32/stm_lib/src/stm32f10x_i2c.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tool_box_stm32/stm_lib/src/stm32f10x_i2c.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="17476" selectionTopPixel="8430"/>
 </editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/workspace/tool_box_stm32/main.c" title="main.c" tooltip="D:/workspace/tool_box_stm32/main.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tool_box_stm32/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4617" selectionTopPixel="1800"/>
+</editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="5">
 <expanded>
 <element path="/tool_box_stm32"/>
 <element path="/tool_box_stm32/cmsis"/>
@@ -48,28 +48,11 @@
 <element path="/tool_box_stm32/stm_lib/src"/>
 </expanded>
 <selection>
-<element path="/tool_box_stm32/stm_lib/inc"/>
+<element path="/tool_box_stm32/main.c"/>
 </selection>
 </viewState>
-</view>
-<view id="org.coocox.component.ui.ComponentView" partName="Components">
-<viewState/>
-</view>
-<view id="org.eclipse.debug.ui.DebugView" partName="Debug">
-<viewState/>
 </view>
 <view id="org.eclipse.ui.console.ConsoleView" partName="Console">
-<viewState/>
-</view>
-<view id="org.coocox.coassistant.view.CoAssistantView_debug" partName="Peripherals">
-<viewState horizontalPosition="0" verticalPosition="0">
-<selection>
-<element name="I2C1"/>
-</selection>
-<registerValues baseAddress="Base Address: 0x40005400" description="Description:  I2C registers"/>
-</viewState>
-</view>
-<view id="org.eclipse.debug.ui.VariableView" partName="Variables">
 <viewState/>
 </view>
 </views>
@@ -103,18 +86,19 @@
 <hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
-<view id="org.coocox.component.ui.ComponentView"/>
-<view id="org.coocox.builder.ui.views.ProjectView"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
-<fastViewBars/>
+<fastViewBars>
+<fastViewBar fastViewLocation="16384" id="org.eclipse.ui.internal.ViewStack@25a5d2" orientation="512" selectedTabId="org.coocox.builder.ui.views.ProjectView" style="0">
+<fastViews>
+<view id="org.coocox.builder.ui.views.ProjectView" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@13d285f">
-<folder activePageID="org.coocox.component.ui.ComponentView" appearance="2" expanded="2">
-<page content="org.coocox.component.ui.ComponentView" label="Components"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<folder appearance="2" expanded="2">
+<page content="org.coocox.component.ui.ComponentView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@13d285f">
@@ -124,12 +108,10 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@16be152" ratio="0.6859324" ratioLeft="629" ratioRight="288" relationship="4" relative="org.eclipse.ui.internal.ViewStack@13d285f">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1763213" ratio="0.13672079" ratioLeft="261" ratioRight="1648" relationship="2" relative="org.eclipse.ui.internal.ViewStack@13d285f">
@@ -150,11 +132,9 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.45" ratioLeft="414" ratioRight="506" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1763213"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@25a5d2" ratio="0.36956522" ratioLeft="340" ratioRight="580" relationship="4" relative="org.eclipse.ui.internal.ViewStack@13d285f">
-<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
-<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<folder appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.views.ProjectView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </mainWindow>
@@ -202,78 +182,52 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
 <hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
-<hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
 <hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
-<view id="org.coocox.coassistant.view.CoAssistantView_debug"/>
-<view id="org.coocox.builder.ui.views.ProjectView"/>
+<hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
-<view id="org.eclipse.debug.ui.VariableView"/>
-<fastViewBars>
-<fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@17f149b" orientation="256" selectedTabId="org.eclipse.debug.ui.DebugView" style="0">
-<fastViews>
-<view id="org.eclipse.debug.ui.DebugView" ratio="0.11521739"/>
+<fastViewBars>&#x0A;<fastViewBar fastViewLocation="16384" id="org.eclipse.ui.internal.ViewStack@1afd425" orientation="512" selectedTabId="org.coocox.builder.ui.views.ProjectView" style="0">&#x0A;<fastViews>&#x0A;<view id="org.coocox.builder.ui.views.ProjectView" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+<fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@17f149b" orientation="256" selectedTabId="org.eclipse.debug.ui.DebugView" style="0">&#x0A;<fastViews>&#x0A;<view id="org.eclipse.debug.ui.DebugView" ratio="0.118303575"/>
 </fastViews>
 </fastViewBar>
 </fastViewBars>
 <viewLayoutRec closeable="false" id="org.eclipse.debug.ui.DebugView"/>
-<layout>
-<mainWindow>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1afd425">
-<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
-<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@1afd425">&#x0A;<folder appearance="2" expanded="0">&#x0A;<page content="org.coocox.builder.ui.views.ProjectView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1afd425">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1afd425">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1a00f30" ratio="0.6826609" ratioLeft="626" ratioRight="291" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1afd425">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1a00f30" ratio="0.6826609" ratioLeft="626" ratioRight="291" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1afd425">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
 <page content="org.coocox.component.ui.ComponentView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@13481d6" ratio="0.5" ratioLeft="956" ratioRight="956" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1a00f30">
-<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@13481d6" ratio="0.5" ratioLeft="956" ratioRight="956" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1a00f30">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.VariableView" label="LabelNotFound"/>
 <page content="org.coocox.codebugger.trace.ui.traceview" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.MemoryView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@13ba0a5" ratio="0.7637507" ratioLeft="1458" ratioRight="451" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1afd425">
-<folder activePageID="org.coocox.coassistant.view.CoAssistantView_debug" appearance="2" expanded="2">
-<page content="org.coocox.coassistant.view.CoAssistantView_debug" label="Peripherals"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@13ba0a5" ratio="0.7637507" ratioLeft="1458" ratioRight="451" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1afd425">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.coocox.coassistant.view.CoAssistantView_debug" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
 <page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.10653266" ratioLeft="106" ratioRight="889" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1afd425"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@a4e3ea" ratio="0.6881134" ratioLeft="631" ratioRight="286" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.18350515" ratioLeft="267" ratioRight="1188" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1afd425"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@a4e3ea" ratio="0.6881134" ratioLeft="631" ratioRight="286" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
-</folder>
-</info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@17f149b" ratio="0.49056605" ratioLeft="26" ratioRight="27" relationship="4" relative="org.eclipse.ui.internal.ViewStack@a4e3ea">
-<folder appearance="2" expanded="0">
-<page content="org.eclipse.debug.ui.DebugView" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@17f149b" ratio="0.49056605" ratioLeft="26" ratioRight="27" relationship="4" relative="org.eclipse.ui.internal.ViewStack@a4e3ea">&#x0A;<folder appearance="2" expanded="0">&#x0A;<page content="org.eclipse.debug.ui.DebugView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
@@ -284,163 +238,161 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/tool_box_stm32/main.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/tool_box_stm32/stm_lib/src/stm32f10x_i2c.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/tool_box_stm32/stm_lib/src/bmp18c.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/tool_box_stm32/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/tool_box_stm32/stm_lib/src/stm32f10x_i2c.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/tool_box_stm32/stm_lib/inc/bmp18c.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/tool_box_stm32/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/tool_box_stm32/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/tool_box_stm32/stm_lib/inc/bmp18c.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/tool_box_stm32/stm_lib/src/bmp18c.c"/>
 </editors>
-<item historyLabel="stm32f10x_i2c.c" index="1">
-<position info="not_deleted" x="18683" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4576" y="0"/>
 </item>
-<item historyLabel="stm32f10x_i2c.c" index="1">
-<position info="not_deleted" x="18780" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4606" y="0"/>
 </item>
-<item historyLabel="stm32f10x_i2c.c" index="1">
-<position info="not_deleted" x="18683" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4636" y="0"/>
 </item>
-<item historyLabel="stm32f10x_i2c.c" index="1">
-<position info="not_deleted" x="18780" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4662" y="0"/>
 </item>
-<item historyLabel="stm32f10x_i2c.c" index="1">
-<position info="not_deleted" x="18683" y="0"/>
-</item>
-<item historyLabel="stm32f10x_i2c.c" index="1">
-<position info="not_deleted" x="18780" y="0"/>
-</item>
-<item historyLabel="stm32f10x_i2c.c" index="1">
-<position info="not_deleted" x="18683" y="0"/>
-</item>
-<item historyLabel="stm32f10x_i2c.c" index="1">
-<position info="not_deleted" x="18780" y="0"/>
-</item>
-<item historyLabel="stm32f10x_i2c.c" index="1">
-<position info="not_deleted" x="18683" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3133" y="0"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="2874" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="3519" y="0"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="4060" y="0"/>
-</item>
-<item historyLabel="stm32f10x_i2c.c" index="4">
-<position/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="1870" y="101"/>
-</item>
-<item historyLabel="bmp18c.h" index="5">
-<position info="not_deleted" x="1008" y="0"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="1872" y="99"/>
-</item>
-<item historyLabel="bmp18c.h" index="5">
-<position info="not_deleted" x="872" y="0"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="1872" y="99"/>
-</item>
-<item historyLabel="bmp18c.h" index="5">
-<position info="not_deleted" x="772" y="0"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="1872" y="99"/>
-</item>
-<item historyLabel="bmp18c.h" index="5">
-<position info="not_deleted" x="624" y="0"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="1872" y="99"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="2509" y="0"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="1870" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="3005" y="0"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="1870" y="0"/>
-</item>
-<item historyLabel="bmp18c.h" index="5">
-<position info="not_deleted" x="1042" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="2988" y="0"/>
-</item>
-<item historyLabel="bmp18c.h" index="5">
-<position info="not_deleted" x="624" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="2988" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="3024" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="191" y="0"/>
-</item>
-<item historyLabel="stm32f10x_i2c.c" index="4">
-<position info="not_deleted" x="17476" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="3519" y="0"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="1870" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="3375" y="0"/>
-</item>
-<item historyLabel="bmp18c.c" index="2">
-<position info="not_deleted" x="1870" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="3458" y="0"/>
-</item>
-<item historyLabel="startup_stm32f10x_md.c" index="6">
+<item historyLabel="startup_stm32f10x_md.c" index="1">
 <position info="not_deleted" x="10032" y="0"/>
 </item>
-<item historyLabel="main.c" index="3">
+<item historyLabel="main.c" index="2">
 <position info="not_deleted" x="191" y="0"/>
 </item>
-<item historyLabel="stm32f10x_i2c.c" index="4">
+<item historyLabel="stm32f10x_i2c.c" index="0">
 <position info="not_deleted" x="17476" y="0"/>
 </item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="2737" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4002" y="0"/>
 </item>
-<item historyLabel="bmp18c.h" index="5">
-<position info="not_deleted" x="624" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4855" y="0"/>
 </item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="3199" y="0"/>
+<item historyLabel="stm32f10x_i2c.c" index="0">
+<position info="not_deleted" x="17476" y="0"/>
 </item>
-<item historyLabel="bmp18c.h" index="5">
-<position info="not_deleted" x="624" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4002" y="0"/>
 </item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="3199" y="0"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4855" y="0"/>
 </item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="3508" y="0"/>
+<item historyLabel="stm32f10x_i2c.c" index="0">
+<position info="not_deleted" x="17476" y="0"/>
 </item>
-<item active="true" historyLabel="main.c" index="3">
-<position info="not_deleted" x="3355" y="22"/>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4002" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4027" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4069" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4097" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4122" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4168" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4194" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4238" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4268" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4334" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4519" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4542" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4576" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4606" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4636" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4689" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4855" y="0"/>
+</item>
+<item historyLabel="stm32f10x_i2c.c" index="0">
+<position info="not_deleted" x="17476" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4002" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4027" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4069" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4097" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4122" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4168" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4194" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4238" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4268" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4334" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4519" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4542" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4576" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4606" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4636" y="0"/>
+</item>
+<item historyLabel="main.c" index="2">
+<position info="not_deleted" x="4689" y="0"/>
+</item>
+<item historyLabel="bmp18c.h" index="3">
+<position info="not_deleted" x="682" y="0"/>
+</item>
+<item historyLabel="bmp18c.c" index="4">
+<position info="not_deleted" x="7074" y="0"/>
+</item>
+<item active="true" historyLabel="main.c" index="2">
+<position info="not_deleted" x="3486" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -449,14 +401,17 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="tool_box_stm32/main.c">
+<persistable path="/tool_box_stm32/main.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_i2c.c" tooltip="tool_box_stm32/stm_lib/src/stm32f10x_i2c.c">
 <persistable path="/tool_box_stm32/stm_lib/src/stm32f10x_i2c.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="display.c" tooltip="tool_box_stm32/stm_lib/src/display.c">
-<persistable path="/tool_box_stm32/stm_lib/src/display.c"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="tool_box_stm32/cmsis_boot/startup/startup_stm32f10x_md.c">
 <persistable path="/tool_box_stm32/cmsis_boot/startup/startup_stm32f10x_md.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="display.c" tooltip="tool_box_stm32/stm_lib/src/display.c">
+<persistable path="/tool_box_stm32/stm_lib/src/display.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_i2c.h" tooltip="tool_box_stm32/stm_lib/inc/stm32f10x_i2c.h">
 <persistable path="/tool_box_stm32/stm_lib/inc/stm32f10x_i2c.h"/>
@@ -491,9 +446,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_rcc.h" tooltip="tool_box_stm32/stm_lib/inc/stm32f10x_rcc.h">
 <persistable path="/tool_box_stm32/stm_lib/inc/stm32f10x_rcc.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.h" tooltip="tool_box_stm32/stm_lib/inc/stm32f10x_gpio.h">
-<persistable path="/tool_box_stm32/stm_lib/inc/stm32f10x_gpio.h"/>
 </file>
 </mruList>
 </workbench>
